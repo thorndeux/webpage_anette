@@ -1,0 +1,88 @@
+body {
+    font-family: "Karla";
+    font-size: 22px;
+}
+
+img {
+    z-index:-1;
+}
+
+.fadein {
+    opacity: 0;
+}
+
+.footer {
+    font-size: 16px;
+}
+
+.handwriting {
+    font-family: "Meddon";
+}
+
+@media only screen and (max-width: 575.98px) {
+    .handwriting {
+        font-size: 28px;
+    }
+}
+
+.headline {
+    position: absolute;
+    left: 36vw;
+    top: 20%;
+
+    font-family: "Meddon";
+    font-size: 5vw;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .headline {
+        top: 30%;
+
+        font-size: 6vw;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .headline {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .navbar {
+        position: static;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    #blockPic {
+        width: 92vw;
+        display: block;
+        float: none!important;
+        margin-left: auto!important;
+        margin-right: auto!important;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    #inlinePic {
+        width: 40vw;
+    }
+}
+
+.picbox {
+    background-color:gainsboro;
+    width: 100vw;
+    height: 37vw;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .picbox {
+        height: 66vw;
+    }
+}
+
+#rosen {
+    width: 50px;
+    height: 50px;
+}
