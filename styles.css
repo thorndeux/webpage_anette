@@ -3,10 +3,6 @@ body {
     font-size: 22px;
 }
 
-img {
-    z-index:-1;
-}
-
 @media only screen and (max-width: 575.98px) {
     .blockPic {
         width: 60vw;
@@ -56,6 +52,14 @@ img {
     .headline {
         display: none;
     }
+}
+
+img {
+    z-index:-1;
+}
+
+.navbar {
+    background-color: inherit;
 }
 
 @media only screen and (max-width: 575.98px) {
