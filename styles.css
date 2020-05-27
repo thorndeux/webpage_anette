@@ -10,6 +10,33 @@ body {
     }
 }
 
+.brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.brand-image {
+    width: 40px;
+    height: 40px;
+}
+
+.brand-text {
+    font-family: "Meddon";
+    margin-left: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+@media only screen and (max-width: 780px) and (min-width: 576px) {
+    .brand-text {
+        display: none;
+    }
+}
+
+.contactlink:link {
+    color: darkgray;
+}
+
 .fadein {
     opacity: 0;
 }
@@ -69,9 +96,4 @@ img {
     .picbox {
         height: 66vw;
     }
-}
-
-#rosen {
-    width: 40px;
-    height: 40px;
 }

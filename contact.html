@@ -25,20 +25,21 @@
         <link rel="preload" as="image" href="images/mentor-3610255_1920x720.jpg">
         <link rel="preload" as="image" href="images/mentor-3610255_3040x1140.jpg">
 
-        <title>Rosen Method Ukiah</title>
+        <title>WholeBeing Rosen Method</title>
     </head>
 
-    <body style="background-color:#66c2ff;"> <!--
+    <body style="background-color:#428cd7;"> <!--
         <!-- Customized Bootstrap navigation bar -->
         <nav class="navbar navbar-expand-sm navbar-light sticky-top shadow-sm">
-            <a class="navbar-brand" href="/index">
-                <img src="images/rosen_white_lines.png" id="rosen" alt="" loading="lazy">
+            <a class="navbar-brand brand-container" href="/index">
+                <img src="images/rosen_white_lines.png" class="brand-image" alt="" loading="lazy">
+                <span class="brand-text h5">WholeBeing</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto justify-content-end">
                     <li class="nav-item">
                         <a class="nav-link" href="/index">Home</a>
                     </li>
@@ -70,26 +71,26 @@
         <!-- Main section -->
         <section class="container pt-5">
             <h1 class="handwriting">Contact me</h1>
-            <p>It's easy to get in touch! Give me a call at XXX-XXX-XXXX, send an email to <a href="mailto:anette@example.com">anette@example.com</a>, or simply leave me a message right here:</p>
+            <p>It's easy to get in touch! Give me a call at XXX-XXX-XXXX, send an email to <a class="contactlink" href="mailto:anette@example.com">anette@example.com</a>, or simply leave me a message right here:</p>
             <!-- Customized Bootstrap form - contact form with input validation-->
             <form class="needs-validation" novalildate>
                 <div class="form-group">
-                    <label for="Name">Name</label>
-                    <input type="text" class="form-control" id="Name" required>
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="Email">Email</label>
-                    <input type="email" class="form-control" id="Email" required>
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="EmailConfirm">Confirm Email</label>
-                    <input type="email" class="form-control" id="EmailConfirm" required>
+                    <label for="emailConfirm">Confirm Email</label>
+                    <input type="email" class="form-control" id="emailConfirm" required>
                 </div>
                 <div class="form-group">
-                    <label for="Message">Your Message</label>
-                    <textarea class="form-control" id="Message" rows="3" required></textarea>
+                    <label for="message">Your Message</label>
+                    <textarea class="form-control" id="message" rows="3" required></textarea>
                 </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-secondary" type="submit">Submit</button>
             </form>
         </section>
 
@@ -98,7 +99,7 @@
             <hr>
             <p>Anette Kögler
             <br>Phone: XXX-XXX-XXXX
-            <br>Email: <a href="mailto:anette@example.com">anette@example.com</a></p>
+            <br>Email: <a class="contactlink" href="mailto:anette@example.com">anette@example.com</a></p>
         </footer>
 
         <!-- Bootstrap JavaScript -->
