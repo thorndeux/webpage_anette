@@ -21,10 +21,11 @@ body {
 }
 
 .brand-text {
-    font-family: "Meddon";
+    width: 159px;
+    height: 29px;
+
+    padding-top: 0.2rem;
     margin-left: 1rem;
-    margin-top: auto;
-    margin-bottom: auto;
 }
 
 @media only screen and (max-width: 780px) and (min-width: 576px) {
@@ -89,11 +90,32 @@ img {
 .picbox {
     background-color:gainsboro;
     width: 100vw;
-    height: 37vw;
+    height: 37.5vw;
 }
 
 @media only screen and (max-width: 991.98px) {
     .picbox {
         height: 66vw;
+    }
+}
+
+.quote {
+    font-family: "Meddon";
+    font-size: 2vw;
+
+    text-align: center;
+
+    background-color: #ff9180;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .quote {
+        font-size: 4vw;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .quote {
+        font-size: 6vw;
     }
 }
