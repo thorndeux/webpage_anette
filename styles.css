@@ -87,6 +87,22 @@ img {
     background-color: inherit;
 }
 
+.overlap {
+    margin-top: -4rem;
+}
+
+@media only screen and (max-width: 575.98px) {
+    .overlap {
+        margin-top: -5rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .overlap {
+        margin-top: inherit;
+    }
+}
+
 .picbox {
     background-color:gainsboro;
     width: 100vw;
@@ -99,23 +115,80 @@ img {
     }
 }
 
+.quote-large {
+    position: absolute;
+    top: 10%;
+    left: 3vw;
+    right: 57vw;
+
+    text-align: center;
+
+    color: lavenderblush;
+
+    font-family: "Meddon";
+    font-size: 2.5vw;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .quote-large {
+        display: none;
+    }
+}
+
 .quote {
     font-family: "Meddon";
-    font-size: 2vw;
+    font-size: 4vw;
+
+    padding: 1rem;
 
     text-align: center;
 
     background-color: #ff9180;
 }
 
-@media only screen and (max-width: 991.98px) {
+@media only screen and (min-width: 992px) {
     .quote {
-        font-size: 4vw;
+        display: none;
     }
 }
 
 @media only screen and (max-width: 575.98px) {
     .quote {
         font-size: 6vw;
+
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+}
+
+.quote2 {
+    position: absolute;
+    top: 30%;
+    left: 45vw;
+    right: 5vw;
+
+    text-align: center;
+
+    color: aliceblue;
+
+    font-family: "Meddon";
+    font-size: 3vw;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .quote2 {
+
+        top: 17%;
+        left: 50vw;
+
+        font-size: 4.5vw;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .quote2 {
+        top: 17%;
+
+        font-size: 4.5vw;
     }
 }
