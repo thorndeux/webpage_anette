@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block color %}
+    #428cd7
+{% endblock %}
+
+{% block slogan %}
+    <div class="p-4 mb-5 quote2">
+        "Becoming Alive to all Possibilities"
+    </div>
+{% endblock %}
+
+{% block slogan2 %}
+{% endblock %}
+
+{% block heading %}
+    Contact me
+{% endblock %}
+
+{% block main %}
+    <p>It's easy to get in touch! Give me a call at XXX-XXX-XXXX, send an email to <a class="contactlink" href="mailto:anette@example.com">anette@example.com</a>, or simply leave me a message right here:</p>
+    <!-- Customized Bootstrap form - contact form with input validation-->
+    <form class="needs-validation" novalildate>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="emailConfirm">Confirm Email</label>
+            <input type="email" class="form-control" id="emailConfirm" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea class="form-control" id="message" rows="3" required></textarea>
+        </div>
+        <button class="btn btn-secondary" type="submit">Submit</button>
+    </form>
+{% endblock %}
