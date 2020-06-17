@@ -52,7 +52,7 @@ body {
     }
 }
 .contactlink:link {
-    color: darkgray;
+    color: gainsboro;
 }
 
 .fadein {
@@ -60,7 +60,7 @@ body {
 }
 
 footer {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .form-group {
@@ -194,22 +194,23 @@ picture {
 
     font-family: "Meddon";
     font-size: 3vw;
+    line-height: 2;
 }
 
 @media only screen and (max-width: 991.98px) {
     .quote2 {
 
-        top: 17%;
+        top: 5%;
         left: 50vw;
 
         font-size: 4.5vw;
+        line-height: 1.8;
     }
 }
 
-@media only screen and (max-width: 575.98px) {
-    .quote2 {
-        top: 17%;
 
-        font-size: 4.5vw;
+@media only screen and (max-width: 991.98px) {
+    .super {
+        vertical-align: super;
     }
 }
