@@ -19,23 +19,61 @@
 
 {% block main %}
     <!-- Customized Bootstrap form - contact form with input validation-->
-    <form class="needs-validation mt-5" novalildate>
+    <form method="post" class="mt-5" novalidate>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" required>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+            <div class="invalid-tooltip">
+                Please provide your name.
+            </div>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" required>
+            <input type="email" class="form-control" name="email" id="email" placeholder="yourmail@example.com" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+            <div class="invalid-tooltip">
+                Please provide a valid email address.
+            </div>
         </div>
         <div class="form-group">
             <label for="emailConfirm">Confirm Email</label>
-            <input type="email" class="form-control" id="emailConfirm" required>
+            <input type="email" class="form-control" id="emailConfirm" placeholder="yourmail@example.com" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+            <div class="invalid-tooltip">
+                Email adresses don't match.
+            </div>
         </div>
         <div class="form-group">
             <label for="message">Your Message</label>
-            <textarea class="form-control" id="message" rows="3" required></textarea>
+            <textarea class="form-control" name="message" id="message" rows="3" placeholder="Let us know your inquiry..." required></textarea>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+            <div class="invalid-tooltip">
+                Please let us know your question.
+            </div>
         </div>
         <button class="btn btn-secondary" type="submit">Submit</button>
     </form>
+    <div class="fixed-top" style="top: 70px; right: 3px">
+        <div class="toast float-right" data-delay="5000">
+            <div class="toast-header">
+                <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="mr-2" width="20px" height="20px" alt="">
+                <strong class="mr-auto">Test</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="toast-body">
+                    Test, test, test...
+                </div>
+          </div>
+      </div>
 {% endblock %}

@@ -63,6 +63,10 @@ footer {
     font-size: 18px;
 }
 
+.form-group {
+    position: relative;
+}
+
 .handwriting {
     font-family: "Meddon";
 }
@@ -96,7 +100,7 @@ footer {
     }
 }
 
-img {
+picture {
     z-index:-1;
 }
 

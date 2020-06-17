@@ -31,7 +31,7 @@
         <!-- Customized Bootstrap Navigation bar -->
         <nav class="navbar navbar-expand-sm navbar-light sticky-top shadow-sm">
             <a class="navbar-brand brand-container" href="/">
-                <img src="static/images/rosen_orange_blue.png" class="brand-image" alt="" loading="lazy">
+                <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="brand-image" alt="" loading="lazy">
                 <div class="brand-text">
                     FullyBeing<span class="brand-small"> Rosen Method</span>
                 </div>
@@ -43,7 +43,15 @@
                 <ul class="navbar-nav ml-auto justify-content-end">
                     {% for page in pages %}
                         <li class="nav-item{% if page[0] == current %} active{% endif %}">
-                            <a class="nav-link" href="/{% if page[0] == "index"%}{% else %}{{ page[0] }}{% endif %}">{{ page[1] }}{% if page[1] == current %}<span class="sr-only">(current)</span>{% endif %}</a>
+                            <a class="nav-link" href="/
+                            {%- if page[0] == "index" -%}
+                            {%- else -%}
+                                {{ page[0] }}
+                            {%- endif %}">{{ page[1] }}
+                                {%- if page[1] == current -%}
+                                    <span class="sr-only">(current)</span>
+                                {%- endif %}
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -54,12 +62,17 @@
         <section class="fadein picbox" style="position:relative;">
             {% block slogan %}
             {% endblock %}
-            <picture>
-                <source media="(max-width: 991.98px)" srcset="static/images/{% for page in pages %}{% if page[0] == current %}{{ page[2] }}{% endif %}{% endfor %}_4x3.jpg">
-                <source media="(min-width: 1920.02px)" srcset="static/images/{% for page in pages %}{% if page[0] == current %}{{ page[2] }}{% endif %}{% endfor %}_8x3_lg.jpg">
-                <img src="static/images/{% for page in pages %}{% if page[0] == current %}{{ page[2] }}{% endif %}{% endfor %}_8x3.jpg" class="img-fluid"
-                  alt="{% for page in pages %}{% if page[0] == current %}{{ page[3] }}{% endif %}{% endfor %}">
-            </picture>
+
+            {% for page in pages %}
+                {% if page[0] == current %}
+                    <picture>
+                        <source media="(max-width: 991.98px)" srcset="static/images/{{ page[2] }}_4x3.jpg">
+                        <source media="(min-width: 1920.02px)" srcset="static/images/{{ page[2] }}_8x3_lg.jpg">
+                        <img src="static/images/{{ page[2] }}_8x3.jpg" class="img-fluid"
+                          alt="{{ page[3] }}">
+                    </picture>
+                {% endif %}
+            {% endfor %}
         </section>
 
         <!-- Main section -->
@@ -81,5 +94,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script src="static/script/fadein.js"></script>
+        <script src="static/script/contact.js"></script>
     </body>
 </html>
