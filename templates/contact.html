@@ -6,7 +6,7 @@
 
 {% block slogan %}
     <div class="p-4 mb-5 quote2">
-        <span class="super">"Becoming</span> Alive to all Possibilities"
+        <span lang="en"><span class="super">"Becoming</span> Alive to all Possibilities"</span><span lang="de">"Sich neuen Möglichkeiten öffnen"</span>
     </div>
 {% endblock %}
 
@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block heading %}
-    Contact me
+    <span lang="en">Contact me</span><span lang="de">Kontaktformular</span>
 {% endblock %}
 
 {% block main %}
@@ -24,45 +24,45 @@
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
             <div class="valid-tooltip">
-                Looks good!
+                <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
             <div class="invalid-tooltip">
-                Please provide your name.
+                <span lang="en">Please provide your name.</span>Bitte geben Sie einen Namen an.<span lang="de"></span>
             </div>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email" id="email" placeholder="yourmail@example.com" required>
             <div class="valid-tooltip">
-                Looks good!
+                <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
             <div class="invalid-tooltip">
-                Please provide a valid email address.
+                <span lang="en">Please provide a valid email address.</span><span lang="de">Bitte geben Sie Ihre Emailadresse an.</span>
             </div>
         </div>
         <div class="form-group">
-            <label for="emailConfirm">Confirm Email</label>
+            <label for="emailConfirm"><span lang="en">Confirm Email</span><span lang="de">Email bestätigen</span></label>
             <input type="email" class="form-control" id="emailConfirm" placeholder="yourmail@example.com" required>
             <div class="valid-tooltip">
-                Looks good!
+                <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
             <div class="invalid-tooltip">
-                Email adresses don't match.
+                <span lang="en">Email adresses don't match.</span><span lang="de">Emailadressen stimmen nicht überein.</span>
             </div>
         </div>
         <div class="form-group">
-            <label for="message">Your Message</label>
+            <label for="message"><span lang="en">Your Message</span><span lang="de">Ihre Anfrage</span></label>
             <textarea class="form-control" name="message" id="message" rows="3" placeholder="Let us know your inquiry..." required></textarea>
             <div class="valid-tooltip">
-                Looks good!
+                <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
             <div class="invalid-tooltip">
-                Please let us know your question.
+                <span lang="en">Please let us know your question.</span><span lang="de">Geben Sie bitte Ihre Anfrage ein.</span>
             </div>
         </div>
-        <button class="btn btn-secondary" type="submit">Submit</button>
+        <button class="btn btn-secondary" type="submit"><span lang="en">Submit</span><span lang="de">Senden</span></button>
     </form>
-    <div class="fixed-top" style="top: 70px; right: 3px">
+    <div class="fixed-top" style="top: 107px; right: 3px; z-index: 1018;">
         <div class="toast float-right" data-delay="5000">
             <div class="toast-header">
                 <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="mr-2" width="20px" height="20px" alt="">

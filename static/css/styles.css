@@ -86,6 +86,23 @@ footer {
     font-size: 5vw;
 }
 
+.headline-de {
+    position: absolute;
+    left: 35vw;
+    top: 31%;
+
+    font-family: "Meddon";
+    font-size: 4vw;
+}
+
+@media only screen and (max-width: 991.98px) {
+    .headline-de {
+        top: 33%;
+
+        font-size: 4vw;
+    }
+}
+
 @media only screen and (max-width: 991.98px) {
     .headline {
         top: 30%;
@@ -98,6 +115,20 @@ footer {
     .headline {
         display: none;
     }
+}
+
+@media only screen and (max-width: 575.98px) {
+    .headline-de {
+        display: none;
+    }
+}
+
+[lang] {
+    display: none;
+}
+
+[lang=en] {
+    display: unset;
 }
 
 picture {

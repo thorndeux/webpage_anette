@@ -25,15 +25,15 @@ $(document).ready(function(){
         }
     });
 
-    // Submit data and process response (TODO)
+    // Submit data and process response
     $("form").submit(function(event) {
         event.preventDefault(); // Prevent form submission, as we are going to submit via AJAX
         event.stopPropagation();
         // Submit ajax post request with form data
-        var posting = $.post("/contact", $(this).serialize());
+        let posting = $.post("/contact", $(this).serialize());
         // Handle successful response
-        var feedback = "";
-        var category = "";
+        let feedback = "";
+        let category = "";
         posting.done(function (data){
             if ( !$.trim( data.feedback )) {
                 feedback = "An empty response was returned.";

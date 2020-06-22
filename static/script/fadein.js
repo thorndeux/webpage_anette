@@ -1,4 +1,6 @@
-var img = document.querySelector("picture");
+// Fades in hero image
+
+var img = $("picture");
 
 // Fades in an element by animating opacity from 0 to 1
 function fadein() {
@@ -9,21 +11,21 @@ function fadein() {
 // Runs when the document is ready
 $(document).ready(function(){
   // If the image is fully loaded, run fadein function
-  if (img.complete) {
+  if (img[0].complete) {
     fadein();
   }
   // Else, listen for the 'load' event and run fadein function then
   else {
-    img.addEventListener("load", fadein());
+    img[0].addEventListener("load", fadein());
   }
 });
 
 // Runs when the window is resized (e.g. orientation change on a mobile device)
 $(window).resize(function(){
-  if (img.complete) {
+  if (img[0].complete) {
     fadein();
   }
   else {
-    img.addEventListener("load", fadein());
+    img[0].addEventListener("load", fadein());
   }
 });
