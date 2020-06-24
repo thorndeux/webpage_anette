@@ -39,9 +39,9 @@ def contact():
     #Send message
     try:
         mail.send(msg)
-        feedback = "Message sent. We will get back to you as soon as possible."
+        feedback = ["Message sent. We will get back to you as soon as possible.", "Nachricht wurde gesendet. Wir melden uns so bald wie möglich."]
     except Exception as e:
-        feedback = str(e)
+        feedback = [str(e), str(e)]
 
     response = {'feedback': feedback}
     return make_response(jsonify(response), 200)

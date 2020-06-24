@@ -32,11 +32,11 @@ $(document).ready(function(){
         // Submit ajax post request with form data
         let posting = $.post("/contact", $(this).serialize());
         // Handle successful response
-        let feedback = "";
+        let feedback = ["", ""];
         let category = "";
         posting.done(function (data){
             if ( !$.trim( data.feedback )) {
-                feedback = "An empty response was returned.";
+                feedback = ["An empty response was returned.", "Leere Serverantwort."];
                 category = "danger";
             }
             else {
@@ -48,24 +48,34 @@ $(document).ready(function(){
         posting.fail(function(xhr) {
             console.log("error. see details below.");
             console.log(xhr.status + ": " + xhr.responseText);
-            feedback = "Something went wrong. Your message could not be sent. \
-                        Please try sending an email to fullybeing.rosenmethod@gmail.com.";
+            feedback = ["Something went wrong. Your message could not be sent. \
+                        Please try sending an email to fullybeing.rosenmethod@gmail.com.",
+                        "Ihre Nachricht konnte nicht gesendet werden. Bitte senden \
+                        Sie eine Email an fullybeing.rosenmethod@gmail.com."];
             category = "danger";
         });
         // Construct toast
         posting.always(function() {
             $(".toast").removeClass("border-success border-danger"); // Make sure no border classes are set
 
+            let toastheader =["", ""];
             if (category == "success") {
                 $(".toast").addClass("border-success");
-                $(".toast-header strong").text("Success!");
+                toastheader = ["Success!", "Senden erfolgreich!"];
             }
             else {
                 $(".toast").addClass("border-danger");
-                $(".toast-header strong").text("Warning!");
+                toastheader = ["Warning!", "Achtung!"];
             }
 
-            $(".toast-body").text(feedback);
+            if (language === "de") {
+                $(".toast-body").text(feedback[1]);
+                $(".toast-header strong").text(toastheader[1]);
+            }
+            else {
+                $(".toast-body").text(feedback[0]);
+                $(".toast-header strong").text(toastheader[0]);
+            }
             $(".toast").toast("show");
         });
         // Remove validation info and reset the form

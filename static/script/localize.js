@@ -1,3 +1,5 @@
+// Handles language localization
+
 var language = "";
 
 // Get language from localStorage and store it in 'language'
@@ -16,6 +18,7 @@ if((language = localStorage.getItem("language")) === null) {
 // Display the appropriate elements
 localize(language);
 
+// Function definitions
 // Displays elements matching the selected language
 function localize(language) {
     // Loop through all elements with the 'lang' attributes, except 'html'
@@ -46,11 +49,48 @@ function localize(language) {
         else {
             return "FullyBeing Rosen Methode";
         }
-    })
+    });
+
+    // Localize form placeholders
+    if (window.location.pathname === "/contact") {
+        const placeholder_en = {
+            "name": "Jane Doe",
+            "email": "email@example.com",
+            "emailConfirm": "email@example.com",
+            "message": "Let us know your inquiry..."
+        };
+        const placeholder_de = {
+            "name": "Maria Musterfrau",
+            "email": "email@beispiel.de",
+            "emailConfirm": "email@beispiel.de",
+            "message": "Ihre Anfrage hier..."
+        }
+
+        $("input, textarea").each(function() {
+            if (language === "de") {
+                for (const [key, value] of Object.entries(placeholder_de)){
+                    if ($(this).attr("id") == key) {
+                        $(this).attr("placeholder", value);
+                    }
+                }
+            }
+            else {
+                for (const [key, value] of Object.entries(placeholder_en)){
+                    if ($(this).attr("id") == key) {
+                        $(this).attr("placeholder", value);
+                    }
+                }
+            }
+        });
+    }
 }
 
-// Remembers selected language and runs localize function
-function select_language(language) {
-    localStorage.setItem("language", language);
-    localize(language);
+// Remembers selected language and runs localize function - executed on user select
+function select_language(lang) {
+    // Store selected language in a local storage item
+    localStorage.setItem("language", lang);
+    // Update global variable for use in other scripts
+    language = lang;
+    // Run localize to display correct content
+    localize(lang);
 }
