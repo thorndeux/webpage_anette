@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block color %}
-    #428cd7
+    #6ca6e0
 {% endblock %}
 
 {% block slogan %}
@@ -63,8 +63,8 @@
         </div>
         <button class="btn btn-secondary" type="submit"><span lang="en">Submit</span><span lang="de">Senden</span></button>
     </form>
-    <div class="fixed-top" style="top: 107px; right: 3px; z-index: 1018;">
-        <div class="toast float-right" data-delay="5000">
+    <div role="alert" arial-described by="toastinfo" style="position: fixed; top: 109px; right: 3px;">
+        <div class="toast" data-delay="5000">
             <div class="toast-header">
                 <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="mr-2" width="20px" height="20px" alt="">
                 <strong class="mr-auto">Test</strong>
@@ -75,6 +75,9 @@
                 <div class="toast-body">
                     Test, test, test...
                 </div>
+          </div>
+          <div id="toastinfo" class="sr-only">
+              Displays feedback on form submission.
           </div>
       </div>
 {% endblock %}

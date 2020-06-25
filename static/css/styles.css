@@ -51,9 +51,6 @@ body {
         font-size: 16px;
     }
 }
-.contactlink:link {
-    color: gainsboro;
-}
 
 .fadein {
     opacity: 0;
@@ -61,6 +58,10 @@ body {
 
 footer {
     font-size: 18px;
+}
+
+.footerlink:link {
+    color: black;
 }
 
 .form-group {
@@ -159,6 +160,7 @@ picture {
     background-color:gainsboro;
     width: 100vw;
     height: 37.5vw;
+    z-index: -1;
 }
 
 @media only screen and (max-width: 991.98px) {

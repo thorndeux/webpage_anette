@@ -21,6 +21,7 @@ localize(language);
 // Function definitions
 // Displays elements matching the selected language
 function localize(language) {
+    // Adapted from https://stackoverflow.com/a/16497937
     // Loop through all elements with the 'lang' attributes, except 'html'
     $("[lang]:not(html)").each(function() {
         // Show  elements with a matching 'lang' attribute
@@ -35,10 +36,11 @@ function localize(language) {
     // Toggle the 'selected' property for the selected language
     $("option").each(function() {
         if ($(this).attr("value") === language) {
-            $(this).prop("selected", true);
+            $(this).prop({"selected": true, "aria-selected": true});
+
         }
         else {
-            $(this).prop("selected", false);
+            $(this).prop({"selected": false, "aria-selected": false});
         }
     });
     // Set appropriate title (this cannot be set through display value)
