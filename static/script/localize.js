@@ -56,13 +56,13 @@ function localize(language) {
     // Localize form placeholders
     if (window.location.pathname === "/contact") {
         const placeholder_en = {
-            "name": "Jane Doe",
+            "name": "Your name",
             "email": "email@example.com",
             "emailConfirm": "email@example.com",
             "message": "Let us know your inquiry..."
         };
         const placeholder_de = {
-            "name": "Maria Musterfrau",
+            "name": "Ihr Name",
             "email": "email@beispiel.de",
             "emailConfirm": "email@beispiel.de",
             "message": "Ihre Anfrage hier..."

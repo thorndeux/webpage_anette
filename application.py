@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, make_response, render_template, request
+from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
@@ -42,6 +42,4 @@ def contact():
         feedback = ["Message sent. We will get back to you as soon as possible.", "Nachricht wurde gesendet. Wir melden uns so bald wie möglich."]
     except Exception as e:
         feedback = [str(e), str(e)]
-
-    response = {'feedback': feedback}
-    return make_response(jsonify(response), 200)
+    return {'feedback': feedback}
