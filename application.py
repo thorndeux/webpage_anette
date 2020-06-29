@@ -10,25 +10,14 @@ app.config.from_envvar("FLASK_SETTINGS")
 mail = Mail(app)
 
 @app.route("/")
-def index(pages = []):
-    # Data to construct navbar and image urls
-    pages = [("index", "Home", "Startseite", "sunset-174276", "Poppy Field"),
-            ("rosen", "About Rosen", "Rosen", "physiotherapy-567021", "Rosen Touch"),
-            ("services", "Services", "Angebot", "water-lily-3784022", "Water Lily"),
-            ("about", "About Me", "Über mich", "religion-4335820", "Prayer Flags"),
-            ("contact", "Contact", "Kontakt", "mentor-3610255", "Helping Hand")]
-    return render_template("index.html", current="index", pages=pages)
+def index():
+    return render_template("index.html", current="index")
 
 @app.route("/<string:route>")
-def page(route, pages = []):
-    # Data to construct navbar and image urls
-    pages = [("index", "Home", "Startseite", "sunset-174276", "Poppy Field"),
-            ("rosen", "About Rosen", "Rosen", "physiotherapy-567021", "Rosen Touch"),
-            ("services", "Services", "Angebot", "water-lily-3784022", "Water Lily"),
-            ("about", "About Me", "Über mich", "religion-4335820", "Prayer Flags"),
-            ("contact", "Contact", "Kontakt", "mentor-3610255", "Helping Hand")]
-    return render_template(route + ".html", current=route, pages=pages)
+def page(route):
+    return render_template(route + ".html", current=route)
 
+# Contact form handling
 @app.route("/contact", methods = ["POST"])
 def contact():
     # Get serialized form data

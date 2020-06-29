@@ -29,6 +29,13 @@
 
     <body style="background-color:{% block color %}{% endblock %};">
         <!-- Customized Bootstrap Navigation bar -->
+        {# Data to contruct navbar #}
+        {% set pages = [("index", "Home", "Startseite"),
+                ("rosen", "About Rosen", "Rosen"),
+                ("services", "Services", "Angebot"),
+                ("about", "About Me", "Über mich"),
+                ("contact", "Contact", "Kontakt")] %}
+
         <nav role="navigation" aria-label="main navigation" class="navbar navbar-expand-sm navbar-light sticky-top shadow-sm">
             <a class="navbar-brand brand-container" href="/">
                 <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="brand-image" alt="" loading="lazy">
@@ -71,16 +78,12 @@
                 {% block slogan %}
                 {% endblock %}
 
-                {% for page in pages %}
-                    {% if page[0] == current %}
-                        <picture role="img">
-                            <source media="(max-width: 991.98px)" srcset="static/images/{{ page[3] }}_4x3.jpg">
-                            <source media="(min-width: 1920.02px)" srcset="static/images/{{ page[3] }}_8x3_lg.jpg">
-                            <img src="static/images/{{ page[3] }}_8x3.jpg" class="img-fluid"
-                              alt="{{ page[4] }}">
-                        </picture>
-                    {% endif %}
-                {% endfor %}
+                <picture role="img">
+                    <source media="(max-width: 991.98px)" srcset="static/images/{{ img }}_4x3.jpg">
+                    <source media="(min-width: 1920.02px)" srcset="static/images/{{ img }}_8x3_lg.jpg">
+                    <img src="static/images/{{ img }}_8x3.jpg" class="img-fluid"
+                      alt="{{ alt }}">
+                </picture>
             </section>
         </div>
 
