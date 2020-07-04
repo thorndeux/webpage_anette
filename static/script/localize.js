@@ -2,21 +2,30 @@
 
 var language = "";
 
-// Get language from localStorage and store it in 'language'
-if((language = localStorage.getItem("language")) === null) {
-    // If language hasn't been stored yet, check browser language
-    // If browser langage is German, set 'language' to 'de'
-    if (window.navigator.language === "de") {
-        language = "de";
+$(document).ready(function() {
+    // Get language from localStorage and store it in 'language'
+    if((language = localStorage.getItem("language")) === null) {
+        // If language hasn't been stored yet, check browser language
+        // If browser langage is German, set 'language' to 'de'
+        if (window.navigator.language === "de") {
+            language = "de";
+        }
+        // Else set 'language' to 'en'
+        else {
+            language = "en";
+        }
     }
-    // Else set 'language' to 'en'
-    else {
-        language = "en";
-    }
-}
 
-// Display the appropriate elements
-localize(language);
+    // Display the appropriate elements
+    localize(language);
+
+    // Handles language selection
+    $("#lang-select").submit(function(event) {
+        event.preventDefault();
+        let lang = $("select")[0].options[$("select")[0].selectedIndex].value;
+        select_language(lang);
+    });
+});
 
 // Function definitions
 // Displays elements matching the selected language
@@ -36,11 +45,11 @@ function localize(language) {
     // Toggle the 'selected' property for the selected language
     $("option").each(function() {
         if ($(this).attr("value") === language) {
-            $(this).prop({"selected": true, "aria-selected": true});
+            $(this).attr({"selected": true, "aria-selected": true});
 
         }
         else {
-            $(this).prop({"selected": false, "aria-selected": false});
+            $(this).attr({"selected": false, "aria-selected": false});
         }
     });
     // Set appropriate title (this cannot be set through display value)

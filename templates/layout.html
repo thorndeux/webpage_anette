@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang=en name={{ locale }}>
     <head>
         <!-- Bootstrap required meta tags -->
         <meta charset="utf-8">
@@ -15,6 +15,17 @@
         <!-- Local Stylesheet -->
         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
 
+        <!-- CSS to handle localization -->
+        <style>
+            [lang] {display: none;}
+            html:lang(en) {display: unset;}
+            {% if locale == "de" %}
+                [lang=de] {display: unset;}
+            {% else %}
+                [lang=en] {display: unset;}
+            {% endif %}
+        </style>
+
         <!-- Favicon - created with https://favicon.io/ -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
@@ -23,12 +34,22 @@
 
         <!-- Preload images -->
         <!-- TODO -->
-
-        <title>FullyBeing Rosen Method</title>
+        {% if locale == "de" %}
+            <title>FullyBeing Rosen Methode</title>
+        {% else %}
+            <title>FullyBeing Rosen Method</title>
+        {% endif %}
     </head>
 
     <body style="background-color:{% block color %}{% endblock %};">
         <!-- Customized Bootstrap Navigation bar -->
+        {# Data to contruct navbar #}
+        {% set pages = [("index", "Home", "Startseite"),
+                ("rosen", "About Rosen", "Rosen"),
+                ("services", "Services", "Angebot"),
+                ("about", "About Me", "Über mich"),
+                ("contact", "Contact", "Kontakt")] %}
+
         <nav role="navigation" aria-label="main navigation" class="navbar navbar-expand-sm navbar-light sticky-top shadow-sm">
             <a class="navbar-brand brand-container" href="/">
                 <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="brand-image" alt="" loading="lazy">
@@ -60,27 +81,42 @@
 
         <div role="region">
             <!-- Langage selection -->
-            <select aria-label="language selection menu" class="small"
-            onchange="select_language(this.options[this.selectedIndex].value)" style="position: fixed; top: 70px; right: 3px; opacity: 0.5; z-index: 1;">
-                <option value="en">English</option>
-                <option value="de">Deutsch</option>
-            </select>
+            <form id="lang-select" action="/
+            {%- for page in pages -%}
+                {%- if page[0] == current -%}
+                    {%- if page[0] == "index" -%}
+                    {%- else -%}
+                        {{ page[0] }}
+                    {%- endif -%}
+                {%- endif -%}
+            {%- endfor %}" method="get" style="position: fixed; top: 70px; right: 3px; width: 150px; z-index: 1;">
+                <div class="input-group" aria-label="language selection menu">
+                    <select name="locale" class="small custom-select" onsubmit="select_language(this.options[this.selectedIndex].value)" style="opacity: 0.65;">
+                        {% if locale == "de" %}
+                        <option value="en">English</option>
+                        <option value="de" selected aria-selected="true">Deutsch</option>
+                        {% else %}
+                        <option value="en" selected aria-selected="true">English</option>
+                        <option value="de">Deutsch</option>
+                        {% endif %}
+                    </select>
+                    <div class="input-group-append" style="opacity: 0.8;">
+                        <button class="btn btn-secondary" type="submit">Ok</button>
+                    </div>
+                </div>
+            </form>
 
             <!-- Image section -->
             <section aria-label="page image and slogan" class="fadein picbox" style="position:relative;">
                 {% block slogan %}
                 {% endblock %}
 
-                {% for page in pages %}
-                    {% if page[0] == current %}
-                        <picture role="img">
-                            <source media="(max-width: 991.98px)" srcset="static/images/{{ page[3] }}_4x3.jpg">
-                            <source media="(min-width: 1920.02px)" srcset="static/images/{{ page[3] }}_8x3_lg.jpg">
-                            <img src="static/images/{{ page[3] }}_8x3.jpg" class="img-fluid"
-                              alt="{{ page[4] }}">
-                        </picture>
-                    {% endif %}
-                {% endfor %}
+                <picture role="img">
+                    <source media="(max-width: 991.98px)" srcset="static/images/{{ img }}_4x3.jpg">
+                    <source media="(min-width: 1920.02px)" srcset="static/images/{{ img }}_8x3_lg.jpg">
+                    <img src="static/images/{{ img }}_8x3.jpg" class="img-fluid"
+                      alt="{{ alt }}">
+                </picture>
             </section>
         </div>
 
@@ -94,8 +130,8 @@
         <!-- Footer -->
         <footer class="container text-center mt-5 pt-3">
             <hr>
-            <p>Anette Koegler
-            <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a></p>
+            <p><span lang="en">Anette Koegler</span><span lang="de">Anette Kögler</span>
+            <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a>
         </footer>
 
         <!-- Bootstrap JavaScript -->
@@ -103,10 +139,12 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <!-- Fades in hero image -->
-        <script src="{{ url_for('static', filename='script/fadein.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='script/fadein.js') }}"></script>
         <!-- Displays elements matching the selected language -->
-        <script src="{{ url_for('static', filename='script/localize.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='script/localize.js') }}"></script>
         <!-- Handles contact form validation and server response -->
-        <script src="{{ url_for('static', filename='script/contact.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='script/contact.js') }}"></script>
+        <!-- Sets cookie if JavaScript is enabled -->
+        <script type="text/javascript" src="{{ url_for('static', filename='script/jscheck.js') }}"></script>
     </body>
 </html>

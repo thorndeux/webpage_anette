@@ -52,10 +52,6 @@ body {
     }
 }
 
-.fadein {
-    opacity: 0;
-}
-
 footer {
     font-size: 18px;
 }
@@ -122,14 +118,6 @@ footer {
     .headline-de {
         display: none;
     }
-}
-
-[lang] {
-    display: none;
-}
-
-[lang=en] {
-    display: unset;
 }
 
 picture {
