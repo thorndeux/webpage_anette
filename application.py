@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, make_response, render_template, request
 from flask_mail import Mail, Message
+from functools import wraps
 
 app = Flask(__name__)
 # Load config data from an environment variable. Needs to be set with
@@ -9,13 +10,43 @@ app.config.from_envvar("FLASK_SETTINGS")
 
 mail = Mail(app)
 
+# Determines appropriate locale
+def localize(selection):
+    # If a selection has been supplied, use that for locale
+    if selection:
+        locale = selection
+    else:
+        # Set 'locale' to cookie value
+        locale = request.cookies.get("locale")
+        # If cookie hasn't been set
+        if locale is None:
+            # Use langage that best matches Accept_language header
+            locale = request.accept_languages.best_match("de", "en")
+    return locale
+
 @app.route("/")
 def index():
-    return render_template("index.html", current="index")
+    # If request has a 'locale' argument, provide it to localize() function
+    locale = localize(request.args.get("locale"))
+    # Construct response
+    resp = make_response(render_template("index.html", current="index", locale=locale))
+    # If request came from the selection menu, add cookie instructions to response
+    if request.args.get("locale"):
+        resp.set_cookie("locale", locale, max_age=60*60*24*30, httponly=True, samesite="Lax")
+    # Return response
+    return resp
 
 @app.route("/<string:route>")
 def page(route):
-    return render_template(route + ".html", current=route)
+    # If request has a 'locale' argument, provide it to localize() function
+    locale = localize(request.args.get("locale"))
+    # Construct response
+    resp = make_response(render_template(route + ".html", current=route, locale=locale))
+    # If request came from the selection menu, add cookie instructions to response
+    if request.args.get("locale"):
+        resp.set_cookie("locale", locale, max_age=60*60*24*30, httponly=True, samesite="Lax")
+    # Return response
+    return resp
 
 # Contact form handling
 @app.route("/contact", methods = ["POST"])
@@ -23,12 +54,26 @@ def contact():
     # Get serialized form data
     form = request.form
     # Compose message
-    msg = Message("Your webpage received a new contact request!", recipients =[app.config["MAIL_USERNAME"]])
+    msg = Message("Your webpage received a new contact request!", recipients = [app.config["MAIL_USERNAME"]])
     msg.body = "Hello Anette,\n\n{0} <{1}> has left the following message:\n\n{2}".format(form["name"], form["email"], form["message"])
     #Send message
     try:
         mail.send(msg)
-        feedback = ["Message sent. We will get back to you as soon as possible.", "Nachricht wurde gesendet. Wir melden uns so bald wie möglich."]
+        locale = localize(None)
+        feedback = ["Message sent. We will get back to you as soon as possible.",
+                    "Nachricht wurde gesendet. Wir melden uns so bald wie möglich."]
+        category = "success"
     except Exception as e:
-        feedback = [str(e), str(e)]
-    return {'feedback': feedback}
+        if request.cookies.get("JSenabled"):
+            feedback = [str(e), str(e)]
+        else:
+            locale = localize(None)
+            feedback = ["Something went wrong. Your message could not be sent. \
+                        Please try sending an email to fullybeing.rosenmethod@gmail.com.",
+                        "Ihre Nachricht konnte nicht gesendet werden. Bitte senden \
+                        Sie eine Email an fullybeing.rosenmethod@gmail.com."];
+            category = "warning"
+    if request.cookies.get("JSenabled"):
+        return {'feedback': feedback}
+    else:
+        return render_template("contact.html", current="contact", locale=locale, feedback=feedback, category=category)

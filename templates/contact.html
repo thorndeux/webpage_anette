@@ -22,11 +22,30 @@
 {% endblock %}
 
 {% block main %}
+    <!-- Alert to display feedback on form submission. Is only being used when JavaScript is not enabled. -->
+    {% if feedback %}
+        {% if category == "success" %}
+            <div id="formalert" class="alert alert-success text-center mt-5" aria-describedby="alertinfo">
+        {% else %}
+            <div id="formalert" class="alert alert-danger text-center mt-5" aria-describedby="alertinfo">
+        {% endif %}
+        {% if locale == "de" %}
+                {{ feedback[1] }}
+        {% else %}
+                {{ feedback[0] }}
+        {% endif %}
+        </div>
+        <div id="alertinfo" class="sr-only">
+            <span lang="en">Displays feedback on contact form submission in case JavaScript is not enalbled.</span>
+            <span lang="de">Gibt Rückmeldung wenn das Formular abgesendet wird</span>
+        </div>
+    {% endif %}
+
     <!-- Customized Bootstrap form - contact form with input validation-->
-    <form method="post" class="mt-5" novalidate>
+    <form id="contact-form" method="post" class="mt-5">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Jane Doe" required>
+            <input type="text" class="form-control" name="name" id="name" placeholder={% if locale == "de" %}"Ihr Name"{% else %}"Your name"{% endif %} required>
             <div class="valid-tooltip">
                 <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
@@ -36,7 +55,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="yourmail@example.com" required>
+            <input type="email" class="form-control" name="email" id="email" placeholder={% if locale == "de" %}"email@beispiel.de"{% else %}"yourmail@example.com"{% endif %} required>
             <div class="valid-tooltip">
                 <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
@@ -46,7 +65,7 @@
         </div>
         <div class="form-group">
             <label for="emailConfirm"><span lang="en">Confirm Email</span><span lang="de">Email bestätigen</span></label>
-            <input type="email" class="form-control" id="emailConfirm" placeholder="yourmail@example.com" required>
+            <input type="email" class="form-control" id="emailConfirm" placeholder={% if locale == "de" %}"email@beispiel.de"{% else %}"yourmail@example.com"{% endif %} required>
             <div class="valid-tooltip">
                 <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
@@ -56,7 +75,7 @@
         </div>
         <div class="form-group">
             <label for="message"><span lang="en">Your Message</span><span lang="de">Ihre Anfrage</span></label>
-            <textarea class="form-control" name="message" id="message" rows="3" placeholder="Let us know your inquiry..." required></textarea>
+            <textarea class="form-control" name="message" id="message" rows="3" placeholder={% if locale == "de" %}"Ihre Anfrage hier..."{% else %}"Let us know your inquiry..."{% endif %} required></textarea>
             <div class="valid-tooltip">
                 <span lang="en">Looks good!</span><span lang="de">Passt!</span>
             </div>
@@ -66,7 +85,7 @@
         </div>
         <button class="btn btn-secondary" type="submit"><span lang="en">Submit</span><span lang="de">Senden</span></button>
     </form>
-    <div role="alert" arial-described by="toastinfo" style="position: fixed; top: 109px; right: 3px;">
+    <div role="alert" aria-describedby="toastinfo" style="position: fixed; top: 109px; right: 3px;">
         <div class="toast" data-delay="5000">
             <div class="toast-header">
                 <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="mr-2" width="20px" height="20px" alt="">
@@ -80,7 +99,8 @@
                 </div>
           </div>
           <div id="toastinfo" class="sr-only">
-              Displays feedback on form submission.
+              <span lang="en">Displays feedback on contact form submission. Requires JavaScript.</span>
+              <span lang="de">Gibt Rückmeldung ob das Kontaktormular erfolgreich. Braucht JavaScript.</span>
           </div>
-      </div>
+    </div>
 {% endblock %}

@@ -2,8 +2,11 @@
 // the server response.
 
 $(document).ready(function(){
+    // Set form to novalidate to prevent HTML5 validation
+    $("#contact-form").attr("novalidate", true);
+
     // Make sure data is only submitted to the server if input is valid
-    $("form").submit(function(event) {
+    $("#contact-form").submit(function(event) {
         // HTML5 validity check
         if ($(this)[0].checkValidity() === false) { // If any field is invalid
             event.preventDefault(); // Prevent form submission
@@ -26,7 +29,7 @@ $(document).ready(function(){
     });
 
     // Submit data and process response
-    $("form").submit(function(event) {
+    $("#contact-form").submit(function(event) {
         event.preventDefault(); // Prevent form submission, as we are going to submit via AJAX
         event.stopPropagation();
         // Submit ajax post request with form data
