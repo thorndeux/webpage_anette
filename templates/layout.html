@@ -32,8 +32,6 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
         <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 
-        <!-- Preload images -->
-        <!-- TODO -->
         {% if locale == "de" %}
             <title>FullyBeing Rosen Methode</title>
         {% else %}
@@ -79,9 +77,31 @@
             </div>
         </nav>
 
+        <!-- Cookie consent -->
+        {% if (request.cookies.get("cookies") != "ok") and (cookies != "ok") %}
+        <div id="cookieNotice" class="alert alert-dark fade show fixed-bottom mb-0" role="alert" style="opacity: 0.9;">
+            <p class="d-inline align-middle">
+                <span lang="en">This website uses cookies to ensure full functionality. By continuing to use this website you accept our <a class="alert-link" href="#">cookie policy</a>.</span>
+                <span lang="de">Diese Webseite verwendet <a class="alert-link" href="#">Cookies</a>. Wenn Sie diese Webseite weiter verwenden, gehen wir von Ihrem Einverständnis aus.</span>
+            </p>
+            <form id="acceptCookies" class="d-inline" action="/
+            {%- for page in pages -%}
+                {%- if page[0] == current -%}
+                    {%- if page[0] == "index" -%}
+                    {%- else -%}
+                        {{ page[0] }}
+                    {%- endif -%}
+                {%- endif -%}
+            {%- endfor %}" method="get">
+                <input type="text" class="d-none" name="cookies" onsubmit="cookie_notice(submit)" value="ok">
+                <button type="submit" class="btn btn-success float-right">Ok</button>
+            </form>
+        </div>
+        {% endif %}
+
         <div role="region">
             <!-- Langage selection -->
-            <form id="lang-select" action="/
+            <form id="langSelect" action="/
             {%- for page in pages -%}
                 {%- if page[0] == current -%}
                     {%- if page[0] == "index" -%}
@@ -91,7 +111,7 @@
                 {%- endif -%}
             {%- endfor %}" method="get" style="position: fixed; top: 70px; right: 3px; width: 150px; z-index: 1;">
                 <div class="input-group" aria-label="language selection menu">
-                    <select name="locale" class="small custom-select" onsubmit="select_language(this.options[this.selectedIndex].value)" style="opacity: 0.65;">
+                    <select name="locale" class="small custom-select" style="opacity: 0.65;">
                         {% if locale == "de" %}
                         <option value="en">English</option>
                         <option value="de" selected aria-selected="true">Deutsch</option>
@@ -131,13 +151,15 @@
         <footer class="container text-center mt-5 pt-3">
             <hr>
             <p><span lang="en">Anette Koegler</span><span lang="de">Anette Kögler</span>
-            <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a>
+            <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a></p>
         </footer>
 
         <!-- Bootstrap JavaScript -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <!-- Local scripts -->
         <!-- Fades in hero image -->
         <script type="text/javascript" src="{{ url_for('static', filename='script/fadein.js') }}"></script>
         <!-- Displays elements matching the selected language -->
@@ -146,5 +168,8 @@
         <script type="text/javascript" src="{{ url_for('static', filename='script/contact.js') }}"></script>
         <!-- Sets cookie if JavaScript is enabled -->
         <script type="text/javascript" src="{{ url_for('static', filename='script/jscheck.js') }}"></script>
+        <!-- Handles cookie notice -->
+        <script type="text/javascript" src="{{ url_for('static', filename='script/cookies.js') }}"></script>
+
     </body>
 </html>

@@ -28,11 +28,16 @@ def localize(selection):
 def index():
     # If request has a 'locale' argument, provide it to localize() function
     locale = localize(request.args.get("locale"))
+    # If request came from the cookie notice, store value in 'cookies'
+    cookies = request.args.get("cookies")
     # Construct response
-    resp = make_response(render_template("index.html", current="index", locale=locale))
+    resp = make_response(render_template("index.html", current="index", locale=locale, cookies=cookies))
     # If request came from the selection menu, add cookie instructions to response
     if request.args.get("locale"):
         resp.set_cookie("locale", locale, max_age=60*60*24*30, httponly=True, samesite="Lax")
+    # If request came from the cookie notice, add cookie instructions to response
+    if request.args.get("cookies"):
+        resp.set_cookie("cookies", cookies, max_age=60*60*24*30, httponly=True, samesite="Lax")
     # Return response
     return resp
 
@@ -40,11 +45,16 @@ def index():
 def page(route):
     # If request has a 'locale' argument, provide it to localize() function
     locale = localize(request.args.get("locale"))
+    # If request came from the cookie notice, store value in 'cookies'
+    cookies = request.args.get("cookies")
     # Construct response
-    resp = make_response(render_template(route + ".html", current=route, locale=locale))
+    resp = make_response(render_template(route + ".html", current=route, locale=locale, cookies=cookies))
     # If request came from the selection menu, add cookie instructions to response
     if request.args.get("locale"):
         resp.set_cookie("locale", locale, max_age=60*60*24*30, httponly=True, samesite="Lax")
+    # If request came from the cookie notice, add cookie instructions to response
+    if request.args.get("cookies"):
+        resp.set_cookie("cookies", "ok", max_age=60*60*24*30, httponly=True, samesite="Lax")
     # Return response
     return resp
 

@@ -20,10 +20,11 @@ $(document).ready(function() {
     localize(language);
 
     // Handles language selection
-    $("#lang-select").submit(function(event) {
+    $("#langSelect").submit(function(event) {
+        // Prevent form submission
         event.preventDefault();
-        let lang = $("select")[0].options[$("select")[0].selectedIndex].value;
-        select_language(lang);
+        // Get selected value and pass it to 'select_language()'
+        select_language($("select")[0].options[$("select")[0].selectedIndex].value);
     });
 });
 
