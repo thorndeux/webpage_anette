@@ -56,8 +56,8 @@ footer {
     font-size: 18px;
 }
 
-.footerlink:link {
-    color: black;
+.footerlink {
+    color: #212529;
 }
 
 .form-group {

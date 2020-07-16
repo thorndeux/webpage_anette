@@ -66,13 +66,14 @@ def contact():
     # Compose message
     msg = Message("Your webpage received a new contact request!", recipients = [app.config["MAIL_USERNAME"]])
     msg.body = "Hello Anette,\n\n{0} <{1}> has left the following message:\n\n{2}".format(form["name"], form["email"], form["message"])
-    #Send message
+    # Send message
     try:
         mail.send(msg)
         locale = localize(None)
         feedback = ["Message sent. We will get back to you as soon as possible.",
                     "Nachricht wurde gesendet. Wir melden uns so bald wie möglich."]
         category = "success"
+    # Handle exceptions
     except Exception as e:
         if request.cookies.get("JSenabled"):
             feedback = [str(e), str(e)]
@@ -83,7 +84,9 @@ def contact():
                         "Ihre Nachricht konnte nicht gesendet werden. Bitte senden \
                         Sie eine Email an fullybeing.rosenmethod@gmail.com."];
             category = "warning"
+    # If JavaScript is enabled, just return feedback, which will be handled by 'contact.js'
     if request.cookies.get("JSenabled"):
         return {'feedback': feedback}
+    # Else render contact page with appropriate feedback information
     else:
         return render_template("contact.html", current="contact", locale=locale, feedback=feedback, category=category)

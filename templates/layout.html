@@ -81,8 +81,8 @@
         {% if (request.cookies.get("cookies") != "ok") and (cookies != "ok") %}
         <div id="cookieNotice" class="alert alert-dark fade show fixed-bottom mb-0" role="alert" style="opacity: 0.9;">
             <p class="d-inline align-middle">
-                <span lang="en">This website uses cookies to ensure full functionality. By continuing to use this website you accept our <a class="alert-link" href="#">cookie policy</a>.</span>
-                <span lang="de">Diese Webseite verwendet <a class="alert-link" href="#">Cookies</a>. Wenn Sie diese Webseite weiter verwenden, gehen wir von Ihrem Einverständnis aus.</span>
+                <span lang="en">This website uses cookies to ensure full functionality. By continuing to use this website you accept our <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='cookies') }}">cookie policy</a>.</span>
+                <span lang="de">Diese Webseite verwendet <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='Cookies') }}">Cookies</a>. Wenn Sie diese Webseite weiter verwenden, gehen wir von Ihrem Einverständnis aus.</span>
             </p>
             <form id="acceptCookies" class="d-inline" action="/
             {%- for page in pages -%}
@@ -99,6 +99,7 @@
         </div>
         {% endif %}
 
+        {% block language %}
         <div role="region">
             <!-- Langage selection -->
             <form id="langSelect" action="/
@@ -125,7 +126,9 @@
                     </div>
                 </div>
             </form>
+            {% endblock %}
 
+            {% block image %}
             <!-- Image section -->
             <section aria-label="page image and slogan" class="fadein picbox" style="position:relative;">
                 {% block slogan %}
@@ -138,6 +141,7 @@
                       alt="{{ alt }}">
                 </picture>
             </section>
+            {% endblock %}
         </div>
 
         <!-- Main section -->
@@ -151,7 +155,11 @@
         <footer class="container text-center mt-5 pt-3">
             <hr>
             <p><span lang="en">Anette Koegler</span><span lang="de">Anette Kögler</span>
-            <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a></p>
+            <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing [dot] rosenmethod [at] gmail [dot] com</a></p>
+            <p style="font-size: 16px;">
+                <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a></span>
+                <span lang="de"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank" >Datenschutz und Cookies</a> &bull; <a href="{{ url_for('page', route='impressum') }}" class="footerlink" target="_blank">Impressum</a></span>
+            </p>
         </footer>
 
         <!-- Bootstrap JavaScript -->
