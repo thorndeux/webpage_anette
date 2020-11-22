@@ -20,22 +20,14 @@ body {
     height: 40px;
 }
 
-@media only screen and (max-width: 575.98px) {
-    .brand-small {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 1100px) and (min-width: 810px) {
-    .brand-small {
-        display: none;
-    }
+.brand-small {
+    font-size: 14px;
 }
 
 .brand-text {
-    font-family: "Meddon";
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
+    line-height: 1.1;
 
     margin-left: 1rem;
 }
@@ -65,7 +57,7 @@ footer {
 }
 
 .handwriting {
-    font-family: "Meddon";
+    font-family: "Dancing Script";
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -80,7 +72,7 @@ footer {
     left: 36vw;
     top: 20%;
 
-    font-family: "Meddon";
+    font-family: "Dancing Script";
     font-size: 5vw;
 }
 
@@ -89,7 +81,7 @@ footer {
     left: 35vw;
     top: 31%;
 
-    font-family: "Meddon";
+    font-family: "Dancing Script";
     font-size: 4vw;
 }
 
@@ -168,7 +160,7 @@ picture {
 
     color: lavenderblush;
 
-    font-family: "Meddon";
+    font-family: "Dancing Script";
     font-size: 3vw;
     line-height: 1.8;
 }
@@ -180,7 +172,7 @@ picture {
 }
 
 .quote {
-    font-family: "Meddon";
+    font-family: "Dancing Script";
     font-size: 4vw;
 
     margin-top: 1rem;
@@ -217,7 +209,7 @@ picture {
 
     color: black;
 
-    font-family: "Meddon";
+    font-family: "Dancing Script";
     font-size: 3vw;
     line-height: 2;
 }
