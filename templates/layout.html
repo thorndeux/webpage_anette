@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
         <!-- Google Fonts Stylesheet -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Meddon">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Dancing+Script">
 
         <!-- Local Stylesheet -->
         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
@@ -33,9 +33,9 @@
         <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 
         {% if locale == "de" %}
-            <title>FullyBeing Rosen-Methode</title>
+            <title>Rosen-Methode Körperarbeit</title>
         {% else %}
-            <title>FullyBeing Rosen Method</title>
+            <title>Rosen Method Bodywork</title>
         {% endif %}
     </head>
 
@@ -49,11 +49,11 @@
                 ("contact", "Contact", "Kontakt")] %}
 
         <nav role="navigation" aria-label="main navigation" class="navbar navbar-expand-sm navbar-light sticky-top shadow-sm">
-            <a class="navbar-brand brand-container" href="/">
+            <a class="navbar-brand brand-container p-0" href="/">
                 <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="brand-image" alt="" loading="lazy">
                 <div class="brand-text">
-                    <span lang="en">FullyBeing<span class="brand-small"> Rosen Method</span></span>
-                    <span lang="de">FullyBeing<span class="brand-small"> Rosen-Methode Körperarbeit</span></span>
+                    <span lang="en">ROSEN METHOD<span class="brand-small"><br> BODYWORK</span></span>
+                    <span lang="de">ROSEN-METHODE<span class="brand-small"><br> KÖRPERARBEIT</span></span>
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
