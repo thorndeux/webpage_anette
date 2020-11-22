@@ -60,10 +60,13 @@ footer {
     font-family: "Dancing Script";
 }
 
+.heading {
+    font-size: 56px;
+}
+
 @media only screen and (max-width: 575.98px) {
-    .handwriting {
-        font-size: 28px;
-        line-height: 1.8;
+    .heading {
+        font-size: 40px;
     }
 }
 
@@ -119,10 +122,6 @@ picture {
 
 .navbar {
     background-color: inherit;
-}
-
-.outline {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .overlap {

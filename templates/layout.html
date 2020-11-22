@@ -136,7 +136,7 @@
                 {% endblock %}
 
                 <picture role="img">
-                    <source media="(max-width: 991.98px)" srcset="static/images/{{ img }}_4x3.jpg">
+                    <source media="(max-width: 991.98px)" srcset="static/images/{{ img }}_3x2.jpg">
                     <source media="(min-width: 1920.02px)" srcset="static/images/{{ img }}_8x3_lg.jpg">
                     <img src="static/images/{{ img }}_8x3.jpg" class="img-fluid"
                       alt="{{ alt }}">
@@ -146,8 +146,8 @@
         </div>
 
         <!-- Main section -->
-        <main role="main" class="container pt-5">
-            <h1 class="handwriting">{% block heading %}{% endblock %}</h1>
+        <main role="main" class="container pt-4">
+            <h1 class="handwriting heading">{% block heading %}{% endblock %}</h1>
             {% block slogan2 %}{% endblock %}
             {% block main %}{% endblock %}
         </main>
