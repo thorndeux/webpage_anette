@@ -6,7 +6,15 @@ app = Flask(__name__)
 # Load config data from an environment variable. Needs to be set with
 # 'export FLASK_SETTINGS="path/to/file.cfg"'. Includes mail server, port,
 # username(i.e. email address), default sender, and password.
-app.config.from_envvar("FLASK_SETTINGS")
+# app.config.from_envvar("FLASK_SETTINGS")
+app.config.update(
+    MAIL_SERVER = 'mail.gmx.net',
+    MAIL_PORT = 587,
+    MAIL_USE_TLS = True,
+    MAIL_USERNAME = 'thorntest@gmx.net',
+    MAIL_PASSWORD = '4xH80hFi&$^yFVua49zxT',
+    MAIL_DEFAULT_SENDER = 'thorntest@gmx.net',
+    MAIL_SUPPRESS_SEND = True,)
 
 mail = Mail(app)
 
