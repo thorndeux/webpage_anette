@@ -1,6 +1,5 @@
 from flask import Flask, make_response, render_template, request
 from flask_mail import Mail, Message
-from functools import wraps
 
 app = Flask(__name__)
 # Load config data from an environment variable. Needs to be set with
@@ -82,7 +81,7 @@ def contact():
             feedback = ["Something went wrong. Your message could not be sent. \
                         Please try sending an email to fullybeing.rosenmethod@gmail.com.",
                         "Ihre Nachricht konnte nicht gesendet werden. Bitte senden \
-                        Sie eine Email an fullybeing.rosenmethod@gmail.com."];
+                        Sie eine Email an fullybeing.rosenmethod@gmail.com."]
             category = "warning"
     # If JavaScript is enabled, just return feedback, which will be handled by 'contact.js'
     if request.cookies.get("JSenabled"):
