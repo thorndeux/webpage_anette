@@ -164,7 +164,7 @@ picture {
     color: lavenderblush;
 
     font-family: "Dancing Script";
-    font-size: 3vw;
+    font-size: 3.7vw;
     line-height: 1.8;
 }
 
@@ -204,17 +204,17 @@ picture {
 
 .quote2 {
     position: absolute;
-    top: 4%;
+    top: 6%;
     left: 30vw;
-    right: 34vw;
+    right: 35vw;
 
     text-align: center;
 
     color: black;
 
     font-family: "Dancing Script";
-    font-size: 3vw;
-    line-height: 2;
+    font-size: 3.7vw;
+    line-height: 1.8;
 }
 
 @media only screen and (max-width: 991.98px) {
