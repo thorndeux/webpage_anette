@@ -155,9 +155,9 @@ picture {
 
 .quote-large {
     position: absolute;
-    top: 8%;
-    left: 3vw;
-    right: 57vw;
+    top: 52%;
+    left: 35vw;
+    right: 15vw;
 
     text-align: center;
 
@@ -168,37 +168,23 @@ picture {
     line-height: 1.8;
 }
 
-@media only screen and (max-width: 991.98px) {
+@media only screen and (min-width: 576px) and (max-width: 991.98px) {
     .quote-large {
-        display: none;
-    }
-}
+        top: 59%;
+        left: 42vw;
+        right: 2vw;
 
-.quote {
-    font-family: "Dancing Script";
-    font-size: 4vw;
-
-    margin-top: 1rem;
-
-    padding: 1rem;
-
-    text-align: center;
-
-    background-color: #ff9180;
-}
-
-@media only screen and (min-width: 992px) {
-    .quote {
-        display: none;
+        font-size: 6vw;
     }
 }
 
 @media only screen and (max-width: 575.98px) {
-    .quote {
-        font-size: 6vw;
+    .quote-large {
+        top: 59%;
+        left: 40vw;
+        right: 1vw;
 
-        padding-top: 0.6rem;
-        padding-bottom: 0.6rem;
+        font-size: 6vw;
     }
 }
 
