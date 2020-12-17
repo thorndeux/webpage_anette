@@ -44,7 +44,7 @@
         {# Data to contruct navbar #}
         {% set pages = [("index", "Home", "Startseite"),
                 ("rosen", "About Rosen", "Die Methode"),
-                ("services", "The Session", "Die Behandlung"),
+                ("session", "The Session", "Die Behandlung"),
                 ("about", "About Me", "Über mich"),
                 ("contact", "Contact", "Kontakt")] %}
 
@@ -159,8 +159,8 @@
             <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a></p>
             <h2 class="handwriting mb-3">Wake up to your life!</h2>
             <p style="font-size: 16px;">
-                <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a></span>
-                <span lang="de"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank" >Datenschutz und Cookies</a> &bull; <a href="{{ url_for('page', route='impressum') }}" class="footerlink" target="_blank">Impressum</a></span>
+                <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a> &bull; <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a></span>
+                <span lang="de"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank" >Datenschutz und Cookies</a> &bull; <a href="{{ url_for('page', route='impressum') }}" class="footerlink" target="_blank">Impressum</a> &bull; <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a></span>
             </p>
         </footer>
 
