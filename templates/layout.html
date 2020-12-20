@@ -82,8 +82,14 @@
         {% if (request.cookies.get("cookies") != "ok") and (cookies != "ok") %}
         <div id="cookieNotice" class="alert alert-dark fade show fixed-bottom mb-0" role="alert" style="opacity: 0.9;">
             <p class="d-inline align-middle">
-                <span lang="en">This website uses cookies to ensure full functionality. By continuing to use this website you accept our <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='cookies') }}">cookie policy</a>.</span>
-                <span lang="de">Diese Webseite verwendet <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='Cookies') }}">Cookies</a>. Wenn Sie diese Webseite weiter verwenden, gehen wir von Ihrem Einverständnis aus.</span>
+                <span lang="en">
+                    This website uses cookies to ensure full functionality. By continuing to use this website you accept our 
+                    <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='cookies') }}" target="_blank">cookie policy</a>.
+                </span>
+                <span lang="de">
+                    Diese Webseite verwendet <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='Cookies') }}" target="_blank">Cookies</a>. 
+                    Wenn Sie diese Webseite weiter verwenden, gehen wir von Ihrem Einverständnis aus.
+                </span>
             </p>
             <form id="acceptCookies" class="d-inline" action="/
             {%- for page in pages -%}
@@ -159,8 +165,13 @@
             <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a></p>
             <h2 class="handwriting mb-3">Wake up to your life!</h2>
             <p style="font-size: 16px;">
-                <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a> &bull; <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a></span>
-                <span lang="de"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank" >Datenschutz und Cookies</a> &bull; <a href="{{ url_for('page', route='impressum') }}" class="footerlink" target="_blank">Impressum</a> &bull; <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a></span>
+                <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a> &bull; 
+                    <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a>
+                </span>
+                <span lang="de"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank" >Datenschutz und Cookies</a> &bull; 
+                    <a href="{{ url_for('page', route='impressum') }}" class="footerlink" target="_blank">Impressum</a> &bull; 
+                    <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a>
+                </span>
             </p>
         </footer>
 
