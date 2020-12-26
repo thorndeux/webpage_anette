@@ -49,6 +49,7 @@ footer {
 }
 
 .footerlink {
+    font-size: 16px;
     color: #212529;
 }
 
@@ -207,7 +208,7 @@ picture {
     .quote2 {
 
         color: white;
-        top: 85%;
+        top: 76%;
         left: 1vw;
         right: 1vw;
 

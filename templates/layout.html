@@ -49,7 +49,7 @@
                 ("contact", "Contact", "Kontakt")] %}
 
         <nav role="navigation" aria-label="main navigation" class="navbar navbar-expand-sm navbar-light sticky-top shadow-sm">
-            <a class="navbar-brand brand-container p-0" href="/">
+            <a class="navbar-brand brand-container p-0 mr-1" href="/">
                 <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="brand-image" alt="" loading="lazy">
                 <div class="brand-text">
                     <span lang="en"><span style="color: #811a40;">ROSEN-METHOD</span><br><span class="brand-small" style="color: #36206a;"> BODYWORK</span></span>
@@ -83,11 +83,11 @@
         <div id="cookieNotice" class="alert alert-dark fade show fixed-bottom mb-0" role="alert" style="opacity: 0.9;">
             <p class="d-inline align-middle">
                 <span lang="en">
-                    This website uses cookies to ensure full functionality. By continuing to use this website you accept our 
+                    This website uses cookies to ensure full functionality. By continuing to use this website you accept our
                     <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='cookies') }}" target="_blank">cookie policy</a>.
                 </span>
                 <span lang="de">
-                    Diese Webseite verwendet <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='Cookies') }}" target="_blank">Cookies</a>. 
+                    Diese Webseite verwendet <a class="alert-link" href="{{ url_for('page', route='privacy', _anchor='Cookies') }}" target="_blank">Cookies</a>.
                     Wenn Sie diese Webseite weiter verwenden, gehen wir von Ihrem Einverständnis aus.
                 </span>
             </p>
@@ -161,15 +161,16 @@
         <!-- Footer -->
         <footer class="container text-center mt-5 pt-3">
             <hr>
-            <p><span lang="en">Anette Koegler</span><span lang="de">Anette Kögler</span>
+            <p><span lang="en">Anette Koegler, M.A.</span><span lang="de">Anette Kögler M.A.</span>
+            <span lang="de"><br>Entspannungs- und Körpertherapie</span>
             <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a></p>
             <h2 class="handwriting mb-3">Wake up to your life!</h2>
             <p style="font-size: 16px;">
-                <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a> &bull; 
+                <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a> &bull;
                     <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a>
                 </span>
-                <span lang="de"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank" >Datenschutz und Cookies</a> &bull; 
-                    <a href="{{ url_for('page', route='impressum') }}" class="footerlink" target="_blank">Impressum</a> &bull; 
+                <span lang="de"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank" >Datenschutz und Cookies</a> &bull;
+                    <a href="{{ url_for('page', route='impressum') }}" class="footerlink" target="_blank">Impressum</a> &bull;
                     <a href="{{ url_for('page', route='credits') }}" class="footerlink" target="_blank">Credits</a>
                 </span>
             </p>
