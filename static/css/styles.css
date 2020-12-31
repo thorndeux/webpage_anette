@@ -129,18 +129,6 @@ picture {
     margin-top: -4rem;
 }
 
-@media only screen and (max-width: 575.98px) {
-    .overlap {
-        margin-top: -5rem;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .overlap {
-        margin-top: inherit;
-    }
-}
-
 .picbox {
     background-color:gainsboro;
     width: 100vw;
@@ -223,3 +211,6 @@ picture {
     }
 }
 
+.text-box {
+    background-color: #ffe0b3 !important;
+}
