@@ -125,10 +125,6 @@ picture {
     background-color: inherit;
 }
 
-.overlap {
-    margin-top: -4rem;
-}
-
 .picbox {
     background-color:gainsboro;
     width: 100vw;
