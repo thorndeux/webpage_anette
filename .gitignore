@@ -1,3 +1,6 @@
 # ignore '__pycache__' directory
 __pycache__/
 __pycache__/application.cpython-38.pyc
+
+# ignore WSGI file
+application.wsgi
