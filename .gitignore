@@ -2,5 +2,11 @@
 __pycache__/
 __pycache__/application.cpython-38.pyc
 
-# ignore WSGI file
+# ignore WSGI file to start flask app with apache
 application.wsgi
+
+# ignore .project file whis is part of the virtual environment
+.project
+
+# ignore .well-known folder which is required for the ssl certificate
+.well-known/

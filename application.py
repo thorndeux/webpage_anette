@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from flask import Flask, make_response, render_template, request
 from flask_mail import Mail, Message
 
