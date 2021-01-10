@@ -153,6 +153,12 @@
 
         <!-- Main section -->
         <main role="main" class="container pt-4">
+            {% block alert %}
+            <div class="alert alert-info" role="alert">
+                <span lang="en"><strong>Please note:</strong> Due to the COVID-19 pandemic I am currently unable to provide any services that require physical touch.</span>
+                <span lang="de"><strong>Bitte beachten Sie:</strong> Aufgrund der COVID-19 Pandemie kann ich momentan leider keine Behandlungen anbieten, die Körperkontakt erfordern.</span>
+            </div>
+            {% endblock %}
             <h1 class="handwriting heading">{% block heading %}{% endblock %}</h1>
             {% block slogan2 %}{% endblock %}
             {% block main %}{% endblock %}
@@ -163,7 +169,7 @@
             <hr>
             <p><span lang="en">Anette Koegler, M.A.</span><span lang="de">Anette Kögler M.A.</span>
             <span lang="de"><br>Entspannungs- und Körpertherapie</span>
-            <br><a href="mailto:fullybeing.rosenmethod@gmail.com" class="footerlink">fullybeing.rosenmethod@gmail.com</a></p>
+            <br><a href="mailto:info@fullybeing-bodywork.com" class="footerlink">info@fullybeing-bodywork.com</a></p>
             <h2 class="handwriting mb-3">Wake up to your life!</h2>
             <p style="font-size: 16px;">
                 <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a> &bull;
