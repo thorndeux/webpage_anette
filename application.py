@@ -65,7 +65,7 @@ def contact():
     # Get serialized form data
     form = request.form
     # Compose message
-    msg = Message("Your webpage received a new contact request!", recipients = "info@fullybeing-bodywork.com")
+    msg = Message("Your webpage received a new contact request!", recipients = ["info@fullybeing-bodywork.com"])
     msg.body = "Hello Anette,\n\n{0} <{1}> has left the following message:\n\n{2}".format(form["name"], form["email"], form["message"])
     # Send message
     try:
