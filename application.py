@@ -81,9 +81,9 @@ def contact():
         else:
             locale = localize(None)
             feedback = ["Something went wrong. Your message could not be sent. \
-                        Please try sending an email to fullybeing.rosenmethod@gmail.com.",
+                        Please try sending an email to info@fullybeing-bodywork.com.",
                         "Ihre Nachricht konnte nicht gesendet werden. Bitte senden \
-                        Sie eine Email an fullybeing.rosenmethod@gmail.com."]
+                        Sie eine Email an info@fullybeing-bodywork.com."]
             category = "warning"
     # If JavaScript is enabled, just return feedback, which will be handled by 'contact.js'
     if request.cookies.get("JSenabled"):
