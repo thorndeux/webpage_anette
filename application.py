@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, make_response, render_template, request
+from flask import Flask, make_response, render_template, request, send_from_directory
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
@@ -24,6 +24,11 @@ def localize(selection):
             # Use langage that best matches Accept_language header
             locale = request.accept_languages.best_match("de", "en")
     return locale
+
+# Serves the sitemap
+@app.route("/sitemap.xml")
+def sitemap():
+    return send_from_directory(".", "sitemap.xml")
 
 @app.route("/")
 def index():
