@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /flask.cfg
+Allow: /
+
+Sitemap: https://fullybeing-bodywork.com/sitemap.xml
