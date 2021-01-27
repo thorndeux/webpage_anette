@@ -2,10 +2,30 @@
 
 <html lang=en>
     <head>
+
         <!-- Bootstrap required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <!-- Description meta tag -->
+        {% if locale == "de" %}
+            <meta name="description" content="{% block description_de %}{% endblock description_de %}">
+        {% else %}
+            <meta name="description" content="{% block description_en %}{% endblock description_en %}">
+        {% endif %}
+
+        {# Routes to construct canoncial URLs #}
+        {% set routes = ["about", "contact", "credits", "impressum", "privacy", "rosen", "session"] %}        
+
+        <!-- Canonical URL -->
+        {% if current == 'index' %}
+        <link rel="canonical" href="https://www.fullybeing-bodywork.com">
+        {% else %}
+            {% for route in routes %}
+                {% if route == current %}<link rel="canonical" href="https://www.fullybeing-bodywork.com/{{route}}">{% endif %}
+            {% endfor %}        
+        {% endif %}
+        
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -35,10 +55,11 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
         <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 
+        <!-- Title -->
         {% if locale == "de" %}
-            <title>Rosen-Methode Körperarbeit</title>
+            <title>{% block title_de %}{% endblock title_de %} | FullyBeing Rosen-Methode Körperarbeit</title>
         {% else %}
-            <title>Rosen Method Bodywork</title>
+            <title>{% block title_en %}{% endblock title_en %} | FullyBeing Rosen-Method Bodywork</title>
         {% endif %}
     </head>
 
@@ -53,7 +74,7 @@
 
         <nav role="navigation" aria-label="main navigation" class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
             <a class="navbar-brand brand-container p-0 mr-1" href="/">
-                <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="brand-image" alt="" loading="lazy">
+                <img src="{{ url_for('static', filename='images/rosen_orange_blue.png') }}" class="brand-image" alt="Rosen Method" loading="lazy">
                 <div class="brand-text">
                     <span lang="en"><span style="color: #811a40;">ROSEN-METHOD</span><br><span class="brand-small" style="color: #36206a;"> BODYWORK</span></span>
                     <span lang="de"><span style="color: #811a40;">ROSEN-METHODE</span><br><span class="brand-small" style="color: #36206a;"> KÖRPERARBEIT</span></span>
