@@ -1,5 +1,5 @@
 body {
-    font-family: "Montserrat";
+    font-family: "Montserrat", Verdana, sans-serif;
     font-size: 22px;
 }
 
@@ -84,7 +84,7 @@ footer {
 }
 
 .handwriting {
-    font-family: "Dancing Script";
+    font-family: "Dancing Script", Verdana, sans-serif;
 }
 
 .heading {
@@ -102,7 +102,7 @@ footer {
     left: 36vw;
     top: 20%;
 
-    font-family: "Dancing Script";
+    font-family: "Dancing Script", Verdana, sans-serif;
     font-size: 5vw;
 }
 
@@ -111,7 +111,7 @@ footer {
     left: 35vw;
     top: 31%;
 
-    font-family: "Dancing Script";
+    font-family: "Dancing Script", Verdana, sans-serif;
     font-size: 4vw;
 }
 
@@ -174,7 +174,7 @@ picture {
 
     color: lavenderblush;
 
-    font-family: "Dancing Script";
+    font-family: "Dancing Script", Verdana, sans-serif;
     font-size: 3.7vw;
     line-height: 1.8;
 }
@@ -209,7 +209,7 @@ picture {
 
     color: black;
 
-    font-family: "Dancing Script";
+    font-family: "Dancing Script", Verdana, sans-serif;
     font-size: 3.7vw;
     line-height: 1.8;
 }
