@@ -12,7 +12,7 @@ $(document).ready(function(){
             event.preventDefault(); // Prevent form submission
             event.stopPropagation();
             event.stopImmediatePropagation(); // Stop other handlers from activating
-
+    
             // Add validation info
             $(this).toggleClass("was-validated", true);
         }
@@ -22,12 +22,12 @@ $(document).ready(function(){
             event.stopPropagation();
             event.stopImmediatePropagation(); // Stop other handlers from activating
             $("#emailConfirm").val(""); // reset email confirmation field
-
+    
             // Add validation info
             $(this).toggleClass("was-validated", true);
         }
     });
-
+    
     // Submit data and process response
     $("#contact-form").submit(function(event) {
         event.preventDefault(); // Prevent form submission, as we are going to submit via AJAX
@@ -60,7 +60,7 @@ $(document).ready(function(){
         // Construct toast
         posting.always(function() {
             $(".toast").removeClass("border-success border-danger"); // Make sure no border classes are set
-
+    
             let toastheader =["", ""];
             if (category == "success") {
                 $(".toast").addClass("border-success");
@@ -70,7 +70,7 @@ $(document).ready(function(){
                 $(".toast").addClass("border-danger");
                 toastheader = ["Warning!", "Achtung!"];
             }
-
+    
             if (language === "de") {
                 $(".toast-body").text(feedback[1]);
                 $(".toast-header strong").text(toastheader[1]);

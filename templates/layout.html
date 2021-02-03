@@ -190,7 +190,7 @@
             <hr>
             <p><span lang="en">Anette Koegler, M.A.</span><span lang="de">Anette Kögler M.A.</span>
             <span lang="de"><br>Entspannungs- und Körpertherapie</span>
-            <br><a href="mailto:info@fullybeing-bodywork.com" class="footerlink">info@fullybeing-bodywork.com</a></p>
+            <br><a class="footerlink" href="javascript:linkTo_UnCryptMailto('nbjmup;jogpAgvmmzcfjoh.cpezxpsl/dpn');">info<span class="d-none">[SPAM PROTECTION - PLEASE REMOVE]</span>@fullybeing-bodywork.com</a></p>
             <h2 class="handwriting mb-3">Wake up to your life!</h2>
             <p style="font-size: 16px;">
                 <span lang="en"><a href="{{ url_for('page', route='privacy') }}" class="footerlink" target="_blank">Privacy and cookie policy</a> &bull;
@@ -218,6 +218,7 @@
         <script type="text/javascript" src="{{ url_for('static', filename='script/jscheck.js') }}"></script>
         <!-- Handles cookie notice -->
         <script type="text/javascript" src="{{ url_for('static', filename='script/cookies.js') }}"></script>
-
+        <!-- Spam protection -->
+        <script type="text/javascript" src="{{ url_for('static', filename='script/mailencrypt.js') }}"></script>
     </body>
 </html>
