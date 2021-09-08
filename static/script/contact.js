@@ -5,6 +5,18 @@ $(document).ready(function(){
     // Set form to novalidate to prevent HTML5 validation
     $("#contact-form").attr("novalidate", true);
 
+    // If the honeypot field is filled, reset the form and do not submit it
+    $("#contact-form").submit(function(event) {
+        if($("#firstname").val() != "") {
+            event.preventDefault(); // Prevent form submission
+            event.stopPropagation();
+            event.stopImmediatePropagation(); // Stop other handlers from activating
+
+            // Reset form
+            $(this).trigger("reset");
+        }
+    });
+
     // Make sure data is only submitted to the server if input is valid
     $("#contact-form").submit(function(event) {
         // HTML5 validity check
