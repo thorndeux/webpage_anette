@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import json
+import os
+import requests
+
 from flask import Flask, make_response, render_template, request, send_from_directory
 from flask_mail import Mail, Message
 
@@ -74,27 +78,48 @@ def page(route):
 def contact():
     # Get serialized form data
     form = request.form
-    # Compose message
-    msg = Message("Your webpage received a new contact request!", recipients = ["info@fullybeing-bodywork.com"])
-    msg.body = "Hello Anette,\n\n{0} <{1}> has left the following message:\n\n{2}".format(form["name"], form["email"], form["message"])
-    # Send message
-    try:
-        mail.send(msg)
-        locale = localize(None)
-        feedback = ["Message sent. We will get back to you as soon as possible.",
-                    "Nachricht wurde gesendet. Wir melden uns so bald wie möglich."]
-        category = "success"
-    # Handle exceptions
-    except Exception as e:
-        if request.cookies.get("JSenabled"):
-            feedback = [str(e), str(e)]
-        else:
+    # Verify hCaptcha
+    CAPTCHA_SECRET = os.environ['CAPTCHA_SECRET']
+    SITE_KEY = os.environ['SITE_KEY']
+    token = form["h-captcha-response"]
+    data = { "secret": CAPTCHA_SECRET, "response": token, "sitekey": SITE_KEY}
+    response = requests.post("https://hcaptcha.com/siteverify", data)
+    response_json = json.loads(response.content)
+    sucess = response_json["success"]
+    print(sucess)
+    # If verification suceeds, send message
+    if sucess:
+        # Compose message
+        msg = Message("Your webpage received a new contact request!", recipients = ["info@fullybeing-bodywork.com"])
+        msg.body = "Hello Anette,\n\n{0} <{1}> has left the following message:\n\n{2}".format(form["name"], form["email"], form["message"])
+        # Send message
+        try:
+            mail.send(msg)
             locale = localize(None)
-            feedback = ["Something went wrong. Your message could not be sent. \
-                        Please try sending an email to info@fullybeing-bodywork.com.",
-                        "Ihre Nachricht konnte nicht gesendet werden. Bitte senden \
-                        Sie eine Email an info@fullybeing-bodywork.com."]
-            category = "warning"
+            feedback = ["Message sent. We will get back to you as soon as possible.",
+                        "Nachricht wurde gesendet. Wir melden uns so bald wie möglich."]
+            category = "success"
+        # Handle exceptions
+        except Exception as e:
+            if request.cookies.get("JSenabled"):
+                feedback = [str(e), str(e)]
+            else:
+                locale = localize(None)
+                feedback = ["Something went wrong. Your message could not be sent. \
+                            Please try sending an email to info@fullybeing-bodywork.com.",
+                            "Ihre Nachricht konnte nicht gesendet werden. Bitte senden \
+                            Sie eine Email an info@fullybeing-bodywork.com."]
+                category = "warning"
+    
+    # Else, return an error message
+    else:
+        locale = localize(None)
+        feedback = ["You failed the bot test! Beep, beep! If you are indeed human \
+                    please send an email to the address in the footer of this page.",
+                    "Sie sind durch den Roboter-Test gefallen! Falls sie wider Erwarten \
+                    ein Mensch sind, senden sie bitte eine Email and die Adresse in der \
+                    Fußzeile."]
+        category = "warning"            
     # If JavaScript is enabled, just return feedback, which will be handled by 'contact.js'
     if request.cookies.get("JSenabled"):
         return {'feedback': feedback}
