@@ -210,7 +210,7 @@
         <!-- Fades in hero image -->
         <script type="text/javascript" src="{{ url_for('static', filename='script/fadein.js') }}"></script>
         <!-- Displays elements matching the selected language -->
-        <script type="text/javascript" src="{{ url_for('static', filename='script/localize.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='script/localize.js') }}" ></script>
         <!-- Handles contact form validation and server response -->
         <script type="text/javascript" src="{{ url_for('static', filename='script/contact.js') }}"></script>
         <!-- Sets cookie if JavaScript is enabled -->
@@ -219,7 +219,7 @@
         <script type="text/javascript" src="{{ url_for('static', filename='script/cookies.js') }}"></script>
         <!-- Spam protection -->
         <script type="text/javascript" src="{{ url_for('static', filename='script/mailencrypt.js') }}"></script>
-        <!-- hCaptcha -->
-        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+         <!-- hCaptcha JavaScript -->
+        {% block hCaptcha %}{% endblock hCaptcha %}
     </body>
 </html>

@@ -3,22 +3,6 @@
 var language = "";
 
 $(document).ready(function() {
-    // Get language from localStorage and store it in 'language'
-    if((language = localStorage.getItem("language")) === null) {
-        // If language hasn't been stored yet, check browser language
-        // If browser langage is German, set 'language' to 'de'
-        if (window.navigator.language === "de") {
-            language = "de";
-        }
-        // Else set 'language' to 'en'
-        else {
-            language = "en";
-        }
-    }
-
-    // Display the appropriate elements
-    localize(language);
-
     // Handles language selection
     $("#langSelect").submit(function(event) {
         // Prevent form submission
@@ -29,6 +13,26 @@ $(document).ready(function() {
 });
 
 // Function definitions
+// Get preferred language and localize page accordingly
+function initialize() {
+        // Get language from localStorage and store it in 'language'
+        if((language = localStorage.getItem("language")) === null) {
+            // If language hasn't been stored yet, check browser language
+            // If browser langage is German, set 'language' to 'de'
+            if (window.navigator.language === "de") {
+                language = "de";
+            }
+            // Else set 'language' to 'en'
+            else {
+                language = "en";
+            }
+        }
+    
+        // Display the appropriate elements
+        localize(language);    
+}
+
+
 // Displays elements matching the selected language
 function localize(language) {
     // Adapted from https://stackoverflow.com/a/16497937
@@ -121,7 +125,7 @@ function localize(language) {
         return ""
     });
 
-    // Localize form placeholders
+    // Localize form placeholders and hCaptcha
     if (window.location.pathname === "/contact") {
         const placeholder_en = {
             "name": "Your name",
@@ -152,6 +156,18 @@ function localize(language) {
                 }
             }
         });
+
+        // Update captcha
+        $("#captcha > *").remove()
+        captcha_id = hcaptcha.render(
+            "captcha",
+            {
+                "theme": "dark",
+                "sitekey": "c6369857-1f0d-4d2c-a0bc-7046c832fb61",
+                "hl": language
+            }
+        )
+        localStorage.setItem("captcha_id", captcha_id);
     }
 }
 

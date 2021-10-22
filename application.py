@@ -117,7 +117,7 @@ def contact():
         feedback = ["You failed the bot test! Beep, beep! If you are indeed human \
                     please send an email to the address in the footer of this page.",
                     "Sie sind durch den Roboter-Test gefallen! Falls sie wider Erwarten \
-                    ein Mensch sind, senden sie bitte eine Email and die Adresse in der \
+                    ein Mensch sind, senden sie bitte eine Email an die Adresse in der \
                     Fußzeile."]
         category = "warning"            
     # If JavaScript is enabled, just return feedback, which will be handled by 'contact.js'

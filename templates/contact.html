@@ -110,7 +110,10 @@
                 <span lang="en">Please let us know your question.</span><span lang="de">Geben Sie bitte Ihre Anfrage ein.</span>
             </div>
         </div>
-        <div class="h-captcha" data-sitekey="c6369857-1f0d-4d2c-a0bc-7046c832fb61"></div>
+
+        <!-- hCaptcha widget -->
+        <div id="captcha"></div>
+
         <button class="btn btn-secondary" type="submit"><span lang="en">Submit</span><span lang="de">Senden</span></button>
     </form>    
 
@@ -124,7 +127,6 @@
                 </button>
             </div>
                 <div class="toast-body">
-                    Test, test, test...
                 </div>
           </div>
           <div id="toastinfo" class="sr-only">
@@ -133,3 +135,6 @@
           </div>
     </div>
 {% endblock %}
+{% block hCaptcha %}            
+    <script onload="initialize()" src="https://js.hcaptcha.com/1/api.js"></script>
+{% endblock hCaptcha %}

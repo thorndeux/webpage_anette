@@ -95,5 +95,7 @@ $(document).ready(function(){
         });
         // Remove validation info and reset the form
         $(this).toggleClass("was-validated", false).trigger("reset");
+        // Reset the captcha
+        hcaptcha.reset(localStorage.getItem("captcha_id"));
     });
 });
