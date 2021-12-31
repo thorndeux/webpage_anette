@@ -85,10 +85,10 @@ def contact():
     data = { "secret": CAPTCHA_SECRET, "response": token, "sitekey": SITE_KEY}
     response = requests.post("https://hcaptcha.com/siteverify", data)
     response_json = json.loads(response.content)
-    sucess = response_json["success"]
-    print(sucess)
+    success = response_json["success"]
+    print(f"Captcha status: {success}")
     # If verification suceeds, send message
-    if sucess:
+    if success:
         # Compose message
         msg = Message("Your webpage received a new contact request!", recipients = ["info@fullybeing-bodywork.com"])
         msg.body = "Hello Anette,\n\n{0} <{1}> has left the following message:\n\n{2}".format(form["name"], form["email"], form["message"])
@@ -103,6 +103,7 @@ def contact():
         except Exception as e:
             if request.cookies.get("JSenabled"):
                 feedback = [str(e), str(e)]
+                category = "warning"
             else:
                 locale = localize(None)
                 feedback = ["Something went wrong. Your message could not be sent. \
@@ -122,7 +123,7 @@ def contact():
         category = "warning"            
     # If JavaScript is enabled, just return feedback, which will be handled by 'contact.js'
     if request.cookies.get("JSenabled"):
-        return {'feedback': feedback}
+        return {'feedback': feedback, 'category': category}
     # Else render contact page with appropriate feedback information
     else:
         return render_template("contact.html", current="contact", locale=locale, feedback=feedback, category=category)

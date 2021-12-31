@@ -5,20 +5,21 @@ $(document).ready(function(){
     // Set form to novalidate to prevent HTML5 validation
     $("#contact-form").attr("novalidate", true);
 
-    // If the honeypot field is filled, reset the form and do not submit it
+    // Make sure data is only submitted to the server if input is valid
     $("#contact-form").submit(function(event) {
-        if($("#firstname").val() != "") {
+        // Make sure hCaptcha is completed
+        if ($('[name=h-captcha-response]').val() === "") {
             event.preventDefault(); // Prevent form submission
             event.stopPropagation();
             event.stopImmediatePropagation(); // Stop other handlers from activating
-
-            // Reset form
-            $(this).trigger("reset");
+            
+            // Add validation info
+            document.getElementById('captcha-dummy').setCustomValidity("Not valid!")
         }
-    });
+        else {
+            document.getElementById('captcha-dummy').setCustomValidity("")
+        }
 
-    // Make sure data is only submitted to the server if input is valid
-    $("#contact-form").submit(function(event) {
         // HTML5 validity check
         if ($(this)[0].checkValidity() === false) { // If any field is invalid
             event.preventDefault(); // Prevent form submission
@@ -56,7 +57,7 @@ $(document).ready(function(){
             }
             else {
                 feedback = data.feedback;
-                category = "success";
+                category = data.category;
             }
         });
         // Handle lack of server response

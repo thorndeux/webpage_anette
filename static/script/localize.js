@@ -3,6 +3,9 @@
 var language = "";
 
 $(document).ready(function() {
+    // Localize page on load
+    initialize()
+
     // Handles language selection
     $("#langSelect").submit(function(event) {
         // Prevent form submission

@@ -56,20 +56,13 @@
         </div>
         <div id="alertinfo" class="sr-only">
             <span lang="en">Displays feedback on contact form submission in case JavaScript is not enabled.</span>
-            <span lang="de">Gibt Rückmeldung wenn das Formular abgesendet wird</span>
+            <span lang="de">Wenn Javascript nicht aktiviert ist, gibt dieser Alert Rückmeldung wenn das Formular abgesendet wird.</span>
         </div>
     {% endif %}
 
     <!-- Customized Bootstrap form - contact form with input validation-->
     <form id="contact-form" method="post" class="mt-5">
         <!-- Spam bot honeypot -->
-        <div class="form-group visible m-0 p-0" aria-describedby="botinfo" style="width:0vw; height:0vh;">
-            <input type="text" class="form-control border-0 m-0 p-0" name="firstname" id="firstname" style="width:0vw; height:0vh;">
-        </div>
-        <div id="botinfo" class="sr-only">
-              <span lang="en">This field is for spam bot detection only. Do not fill.</span>
-              <span lang="de">Dieses Feld auschließlich der Bekämpfung von Spambots. Nicht ausfüllen.</span>
-        </div>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" id="name" placeholder={% if locale == "de" %}"Ihr Name"{% else %}"Your name"{% endif %} required>
@@ -112,7 +105,13 @@
         </div>
 
         <!-- hCaptcha widget -->
-        <div id="captcha"></div>
+        <div class="form-group">
+            <div id="captcha"></div>
+            <input id="captcha-dummy" class="d-none">
+            <div class="invalid-tooltip">
+                <span lang="en">Are you a bot?</span><span lang="de">Sind Sie ein Roboter?</span>
+            </div>
+        </div>
 
         <button class="btn btn-secondary" type="submit"><span lang="en">Submit</span><span lang="de">Senden</span></button>
     </form>    
