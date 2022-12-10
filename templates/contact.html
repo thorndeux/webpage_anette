@@ -56,13 +56,12 @@
         </div>
         <div id="alertinfo" class="sr-only">
             <span lang="en">Displays feedback on contact form submission in case JavaScript is not enabled.</span>
-            <span lang="de">Wenn Javascript nicht aktiviert ist, gibt dieser Alert Rückmeldung wenn das Formular abgesendet wird.</span>
+            <span lang="de">Wenn Javascript nicht aktiviert ist, gibt dieser Alert Rückmeldung wenn das Kontaktformular abgesendet wird.</span>
         </div>
     {% endif %}
 
     <!-- Customized Bootstrap form - contact form with input validation-->
     <form id="contact-form" method="post" class="mt-5">
-        <!-- Spam bot honeypot -->
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" id="name" placeholder={% if locale == "de" %}"Ihr Name"{% else %}"Your name"{% endif %} required>
@@ -103,17 +102,28 @@
                 <span lang="en">Please let us know your question.</span><span lang="de">Geben Sie bitte Ihre Anfrage ein.</span>
             </div>
         </div>
-
-        <!-- hCaptcha widget -->
-        <div class="form-group">
-            <div id="captcha"></div>
-            <input id="captcha-dummy" class="d-none">
-            <div class="invalid-tooltip">
-                <span lang="en">Are you a bot?</span><span lang="de">Sind Sie ein Roboter?</span>
+        <label for="captcha-group">Captcha</label>
+        <div class="form-row">
+            <div class="col-8 col-md-6">
+                <div class="input-group" id="captcha-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">{{ captcha.captcha }} =</div>
+                    </div>
+                    <input type="number" class="form-control" name="captcha_result" id="captcha_result" rows="3" placeholder={% if locale == "de" %}"Ergebnis..."{% else %}"Result..."{% endif %} required></input>
+                    <div class="valid-tooltip">
+                        <span lang="en">Looks good!</span><span lang="de">Passt!</span>
+                    </div>
+                    <div class="invalid-tooltip">
+                        <span lang="en">Please confirm you are not a robot!</span><span lang="de">Bestätigen Sie bitt, dass Sie kein Roboter sind!</span>
+                    </div>
+                    <input class="d-none" name="captcha_num" value={{ captcha.num }}></input>
+                </div>
+            </div>
+            
+            <div class="col-4 col-md-6">
+                <button class="btn btn-secondary" type="submit"><span lang="en">Submit</span><span lang="de">Senden</span></button>
             </div>
         </div>
-
-        <button class="btn btn-secondary" type="submit"><span lang="en">Submit</span><span lang="de">Senden</span></button>
     </form>    
 
     <div role="alert" aria-describedby="toastinfo" style="position: fixed; top: 109px; right: 3px;">
@@ -134,6 +144,3 @@
           </div>
     </div>
 {% endblock %}
-{% block hCaptcha %}            
-    <script onload="initialize()" src="https://js.hcaptcha.com/1/api.js"></script>
-{% endblock hCaptcha %}

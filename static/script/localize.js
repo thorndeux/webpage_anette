@@ -128,19 +128,21 @@ function localize(language) {
         return ""
     });
 
-    // Localize form placeholders and hCaptcha
+    // Localize form placeholders
     if (window.location.pathname === "/contact") {
         const placeholder_en = {
             "name": "Your name",
             "email": "email@example.com",
             "emailConfirm": "email@example.com",
-            "message": "Let us know your inquiry..."
+            "message": "Let us know your inquiry...",
+            "captcha_result": "Result..."
         };
         const placeholder_de = {
             "name": "Ihr Name",
             "email": "email@beispiel.de",
             "emailConfirm": "email@beispiel.de",
-            "message": "Ihre Anfrage hier..."
+            "message": "Ihre Anfrage hier...",
+            "captcha_result": "Ergebnis..."
         }
 
         $("input, textarea").each(function() {
@@ -159,18 +161,6 @@ function localize(language) {
                 }
             }
         });
-
-        // Update captcha
-        $("#captcha > *").remove()
-        captcha_id = hcaptcha.render(
-            "captcha",
-            {
-                "theme": "dark",
-                "sitekey": "c6369857-1f0d-4d2c-a0bc-7046c832fb61",
-                "hl": language
-            }
-        )
-        localStorage.setItem("captcha_id", captcha_id);
     }
 }
 

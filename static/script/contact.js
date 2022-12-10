@@ -7,18 +7,6 @@ $(document).ready(function(){
 
     // Make sure data is only submitted to the server if input is valid
     $("#contact-form").submit(function(event) {
-        // Make sure hCaptcha is completed
-        if ($('[name=h-captcha-response]').val() === "") {
-            event.preventDefault(); // Prevent form submission
-            event.stopPropagation();
-            event.stopImmediatePropagation(); // Stop other handlers from activating
-            
-            // Add validation info
-            document.getElementById('captcha-dummy').setCustomValidity("Not valid!")
-        }
-        else {
-            document.getElementById('captcha-dummy').setCustomValidity("")
-        }
 
         // HTML5 validity check
         if ($(this)[0].checkValidity() === false) { // If any field is invalid
@@ -96,7 +84,5 @@ $(document).ready(function(){
         });
         // Remove validation info and reset the form
         $(this).toggleClass("was-validated", false).trigger("reset");
-        // Reset the captcha
-        hcaptcha.reset(localStorage.getItem("captcha_id"));
     });
 });

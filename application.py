@@ -7,6 +7,8 @@ import requests
 from flask import Flask, make_response, render_template, request, send_from_directory
 from flask_mail import Mail, Message
 
+from captcha import *
+
 app = Flask(__name__)
 # Load config data from an environment variable. Needs to be set with
 # 'export FLASK_SETTINGS="path/to/file.cfg"'. Includes mail server, port,
@@ -62,8 +64,10 @@ def page(route):
     locale = localize(request.args.get("locale"))
     # If request came from the cookie notice, store value in 'cookies'
     cookies = request.args.get("cookies")
+    # If it's the contact page, provide a captcha
+    captcha = get_captcha() if "contact" in route else None
     # Construct response
-    resp = make_response(render_template(route + ".html", current=route, locale=locale, cookies=cookies))
+    resp = make_response(render_template(route + ".html", current=route, locale=locale, cookies=cookies, captcha=captcha))
     # If request came from the selection menu, add cookie instructions to response
     if request.args.get("locale"):
         resp.set_cookie("locale", locale, max_age=60*60*24*30, httponly=True, samesite="Lax")
@@ -78,16 +82,9 @@ def page(route):
 def contact():
     # Get serialized form data
     form = request.form
-    # Verify hCaptcha
-    CAPTCHA_SECRET = os.environ['CAPTCHA_SECRET']
-    SITE_KEY = os.environ['SITE_KEY']
-    token = form["h-captcha-response"]
-    data = { "secret": CAPTCHA_SECRET, "response": token, "sitekey": SITE_KEY}
-    response = requests.post("https://hcaptcha.com/siteverify", data)
-    response_json = json.loads(response.content)
-    success = response_json["success"]
-    print(f"Captcha status: {success}")
-    # If verification suceeds, send message
+    # Check if captcha was solved correctly
+    success = check_captcha(int(form["captcha_num"]), int(form["captcha_result"]))
+    # If yes, send message
     if success:
         # Compose message
         msg = Message("Your webpage received a new contact request!", recipients = ["info@fullybeing-bodywork.com"])
@@ -115,7 +112,7 @@ def contact():
     # Else, return an error message
     else:
         locale = localize(None)
-        feedback = ["You failed the bot test! Beep, beep! If you are indeed human \
+        feedback = ["You failed the bot test! Beep, beep! If you are indeed human, \
                     please send an email to the address in the footer of this page.",
                     "Sie sind durch den Roboter-Test gefallen! Falls sie wider Erwarten \
                     ein Mensch sind, senden sie bitte eine Email an die Adresse in der \
@@ -126,4 +123,4 @@ def contact():
         return {'feedback': feedback, 'category': category}
     # Else render contact page with appropriate feedback information
     else:
-        return render_template("contact.html", current="contact", locale=locale, feedback=feedback, category=category)
+        return render_template("contact.html", current="contact", locale=locale, feedback=feedback, category=category, captcha=get_captcha())
