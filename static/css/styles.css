@@ -181,18 +181,18 @@ picture {
 
 @media only screen and (min-width: 576px) and (max-width: 991.98px) {
   .quote-large {
-    top: 59%;
-    left: 42vw;
+    top: 65%;
+    left: 40vw;
     right: 2vw;
 
-    font-size: 6vw;
+    font-size: 5vw;
   }
 }
 
 @media only screen and (max-width: 575.98px) {
   .quote-large {
     top: 59%;
-    left: 40vw;
+    left: 37vw;
     right: 1vw;
 
     font-size: 6vw;
@@ -218,10 +218,10 @@ picture {
   .quote2 {
     color: white;
     top: 76%;
-    left: 1vw;
+    left: 0px;
     right: 1vw;
 
-    font-size: 6.8vw;
+    font-size: 6.7vw;
     line-height: 1.4;
   }
   .quote2 > span {
