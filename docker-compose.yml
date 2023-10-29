@@ -4,14 +4,14 @@ services:
   app:
     image: webpage_anette:dev
     build:
-      context: ../
+      context: ./
       dockerfile: docker/Dockerfile
-    env_file: ../../webpage_anette.dev.env
+    env_file: ../webpage_anette.dev.env
     ports:
       - "3000:3000"
     volumes:
-      - ../:/app:rw
-      - ../../webpage_anette.cfg:/flask.cfg:ro
+      - ./:/app:rw
+      - ../webpage_anette.cfg:/flask.cfg:ro
     entrypoint:
       - flask
       - run
