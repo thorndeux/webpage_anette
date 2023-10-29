@@ -1,14 +1,39 @@
-{% extends "layout.html" %} {% block description_de -%} Ich biete einstündige
-Behandlungen in der Körperarbeit nach Marion Rosen an. Durch sanfte Berührung
-chronisch angespannter Muskeln kann es zu einem freieren Atem und einer tiefen
-Entspannung kommen. Emotionen dürfen gefühlt und ins Jetzt integriert werden.
-{%- endblock description_de %} {% block description_en -%} I offer hour-long
-Rosen-Method bodywork sessions. Gentle, non-manipulative touch can lead to the
-release of chronic tension and to emotional healing. Hidden potential is
-awakened, allowing for more aliveness, vitality, and possibilities. {%- endblock
-description_en %} {% block title_de %} Behandlung {% endblock title_de %} {%
-block title_en %} Session {% endblock title_en %} {% block color %} #FFEBCD {%
-endblock %} {% block slogan %}
+<!-- prettier-ignore -->
+{% extends "layout.html" %}
+
+<!-- prettier-ignore -->
+{% block description_de -%}
+  Ich biete einstündige Behandlungen in der Körperarbeit nach Marion Rosen an. 
+  Durch sanfte Berührung chronisch angespannter Muskeln kann es zu einem 
+  freieren Atem und einer tiefen Entspannung kommen. Emotionen dürfen gefühlt 
+  und ins Jetzt integriert werden.
+{%- endblock description_de %}
+
+<!-- prettier-ignore -->
+{% block description_en -%}
+  I offer hour-long Rosen-Method bodywork sessions. Gentle, non-manipulative 
+  touch can lead to the release of chronic tension and to emotional healing. 
+  Hidden potential is awakened, allowing for more aliveness, vitality, and 
+  possibilities.
+{%- endblock description_en %}
+
+<!-- prettier-ignore -->
+{% block title_de %}
+  Behandlung
+{% endblock title_de %}
+
+<!-- prettier-ignore -->
+{% block title_en %}
+  Session
+{% endblock title_en %}
+
+<!-- prettier-ignore -->
+{% block color %}
+  #FFEBCD
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block slogan %}
 <div class="p-2 p-sm-4 quote-large">
   <span lang="en"
     >"Contacting the <br class="d-inline d-lg-none" /><span
@@ -25,10 +50,20 @@ endblock %} {% block slogan %}
     <span class="ml-n5 ml-sm-0">- die Seele erreichen"</span></span
   >
 </div>
-{% endblock %} {% set img = "massage" %} {% set alt = "Bodywork" %} {% block
-alert %} {% endblock %} {% block heading %}
-<span lang="en">The Rosen Session</span
-><span lang="de">Die Rosen Behandlung</span>
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% set img = "massage" %}
+{% set alt = "Bodywork" %}
+
+<!-- prettier-ignore -->
+{% block alert %}
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block heading %}
+<span lang="en">The Rosen Session</span>
+<span lang="de">Die Rosen Behandlung</span>
 {% endblock %} {% block main %}
 <div lang="en">
   <p>
@@ -88,11 +123,8 @@ alert %} {% endblock %} {% block heading %}
     <li>long for wholeness and ease</li>
     <li>who have been in recovery from addictions for at least one year</li>
   </ul>
-  <div class="alert alert-danger shadow-sm text-box">
-    <strong>
-      <p>Price: $60-80 per session (sliding scale)</p>
-      <p class="mb-n1">Home visit: $80-100</p>
-    </strong>
+  <div class="alert alert-danger shadow-sm text-box-session">
+    <strong>Price: $80-100 per session (sliding scale)</strong>
   </div>
   <h1 class="handwriting">Marion Rosen</h1>
   <img
@@ -179,11 +211,8 @@ alert %} {% endblock %} {% block heading %}
     <li>die ihr eigenes Potential klarer erkennen möchten</li>
     <li>die mindestens seit einem Jahr drogenfrei sind</li>
   </ul>
-  <div class="alert alert-danger shadow-sm text-box">
-    <strong>
-      <p>Preis: 60-80 Euro pro Sitzung (freie Selbsteinschätzung)</p>
-      <p class="mb-n1">Hausbesuch: 80-100 Euro</p>
-    </strong>
+  <div class="alert alert-danger shadow-sm text-box-session">
+    <strong>Preis: 80-100 Euro pro Sitzung (freie Selbsteinschätzung)</strong>
   </div>
   <h1 class="handwriting">Marion Rosen</h1>
   <img

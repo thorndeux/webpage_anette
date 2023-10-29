@@ -235,6 +235,10 @@ picture {
   }
 }
 
-.text-box {
+.text-box-session {
   background-color: #ffe0b3 !important;
+}
+
+.text-box-about {
+  background-color: #a0d5f8 !important;
 }
